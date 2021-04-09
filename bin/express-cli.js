@@ -145,8 +145,8 @@ function createApplication (name, dir) {
       start: 'node ./bin/www'
     },
     dependencies: {
-      'debug': '~2.6.9',
-      'express': '~4.16.1'
+      'debug': '~4.3.1',
+      'express': '~4.17.1'
     }
   }
 
@@ -166,7 +166,7 @@ function createApplication (name, dir) {
   // Request logger
   app.locals.modules.logger = 'morgan'
   app.locals.uses.push("logger('dev')")
-  pkg.dependencies.morgan = '~1.9.1'
+  pkg.dependencies.morgan = '~1.10.0'
 
   // Body parsers
   app.locals.uses.push('express.json()')
@@ -175,7 +175,7 @@ function createApplication (name, dir) {
   // Cookie parser
   app.locals.modules.cookieParser = 'cookie-parser'
   app.locals.uses.push('cookieParser()')
-  pkg.dependencies['cookie-parser'] = '~1.4.4'
+  pkg.dependencies['cookie-parser'] = '~1.4.5'
 
   if (dir !== '.') {
     mkdir(dir, '.')
@@ -212,7 +212,7 @@ function createApplication (name, dir) {
   if (program.view) {
     // Copy view templates
     mkdir(dir, 'views')
-    pkg.dependencies['http-errors'] = '~1.6.3'
+    pkg.dependencies['http-errors'] = '~1.8.0'
     switch (program.view) {
       case 'dust':
         copyTemplateMulti('views', dir + '/views', '*.dust')
@@ -249,12 +249,12 @@ function createApplication (name, dir) {
     case 'compass':
       app.locals.modules.compass = 'node-compass'
       app.locals.uses.push("compass({ mode: 'expanded' })")
-      pkg.dependencies['node-compass'] = '0.2.3'
+      pkg.dependencies['node-compass'] = '0.2.4'
       break
     case 'less':
       app.locals.modules.lessMiddleware = 'less-middleware'
       app.locals.uses.push("lessMiddleware(path.join(__dirname, 'public'))")
-      pkg.dependencies['less-middleware'] = '~2.2.1'
+      pkg.dependencies['less-middleware'] = '~3.1.0'
       break
     case 'sass':
       app.locals.modules.sassMiddleware = 'node-sass-middleware'
@@ -264,7 +264,7 @@ function createApplication (name, dir) {
     case 'stylus':
       app.locals.modules.stylus = 'stylus'
       app.locals.uses.push("stylus.middleware(path.join(__dirname, 'public'))")
-      pkg.dependencies['stylus'] = '0.54.5'
+      pkg.dependencies['stylus'] = '0.54.8'
       break
   }
 
@@ -288,11 +288,11 @@ function createApplication (name, dir) {
       break
     case 'ejs':
       app.locals.view = { engine: 'ejs' }
-      pkg.dependencies.ejs = '~2.6.1'
+      pkg.dependencies.ejs = '~3.1.6'
       break
     case 'hbs':
       app.locals.view = { engine: 'hbs' }
-      pkg.dependencies.hbs = '~4.0.4'
+      pkg.dependencies.hbs = '~4.1.1'
       break
     case 'hjs':
       app.locals.view = { engine: 'hjs' }
@@ -304,15 +304,15 @@ function createApplication (name, dir) {
       break
     case 'pug':
       app.locals.view = { engine: 'pug' }
-      pkg.dependencies.pug = '2.0.0-beta11'
+      pkg.dependencies.pug = '3.0.2'
       break
     case 'twig':
       app.locals.view = { engine: 'twig' }
-      pkg.dependencies.twig = '~0.10.3'
+      pkg.dependencies.twig = '~1.15.4'
       break
     case 'vash':
       app.locals.view = { engine: 'vash' }
-      pkg.dependencies.vash = '~0.12.6'
+      pkg.dependencies.vash = '~0.13.0'
       break
     default:
       app.locals.view = false

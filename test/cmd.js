@@ -13,7 +13,7 @@ const validateNpmName = require('validate-npm-package-name')
 
 const APP_START_STOP_TIMEOUT = 10000
 const PKG_PATH = path.resolve(__dirname, '..', 'package.json')
-const BIN_PATH = path.resolve(path.dirname(PKG_PATH), require(PKG_PATH).bin.express)
+const BIN_PATH = path.resolve(path.dirname(PKG_PATH), require(PKG_PATH).bin['express-dh'])
 const NPM_INSTALL_TIMEOUT = 300000 // 5 minutes
 const TEMP_DIR = utils.tmpDir()
 
