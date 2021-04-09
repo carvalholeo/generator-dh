@@ -24,7 +24,7 @@
     "digital house",
     "dh"
   ],
-  "repository": "expressjs/generator",
+  "repository": "carvalholeo/generator-dh",
   "license": "MIT",
   "dependencies": {
     "commander": "2.15.1",
