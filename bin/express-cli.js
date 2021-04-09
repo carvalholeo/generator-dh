@@ -68,10 +68,10 @@ if (!exit.exited) {
  */
 
 function around (obj, method, fn) {
-  let old = obj[method]
+  const old = obj[method]
 
   obj[method] = function () {
-    let args = new Array(arguments.length)
+    const args = new Array(arguments.length)
     for (let i = 0; i < args.length; i++) args[i] = arguments[i]
     return fn.call(this, old, args)
   }
@@ -82,7 +82,7 @@ function around (obj, method, fn) {
  */
 
 function before (obj, method, fn) {
-  let old = obj[method]
+  const old = obj[method]
 
   obj[method] = function () {
     fn.call(this)
@@ -95,7 +95,7 @@ function before (obj, method, fn) {
  */
 
 function confirm (msg, callback) {
-  let rl = readline.createInterface({
+  const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   })
@@ -137,7 +137,7 @@ function createApplication (name, dir) {
   console.log()
 
   // Package
-  let pkg = {
+  const pkg = {
     name: name,
     version: '0.0.0',
     private: true,
@@ -151,8 +151,8 @@ function createApplication (name, dir) {
   }
 
   // JavaScript
-  let app = loadTemplate('js/app.js')
-  let www = loadTemplate('js/www')
+  const app = loadTemplate('js/app.js')
+  const www = loadTemplate('js/www')
 
   // App name
   www.locals.name = name
@@ -335,7 +335,7 @@ function createApplication (name, dir) {
   mkdir(dir, 'bin')
   write(path.join(dir, 'bin/www'), www.render(), MODE_0755)
 
-  var prompt = launchedFromCmd() ? '>' : '$'
+  const prompt = launchedFromCmd() ? '>' : '$'
 
   if (dir !== '.') {
     console.log()
