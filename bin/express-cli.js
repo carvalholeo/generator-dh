@@ -1,21 +1,21 @@
 #!/usr/bin/env node
 
-var ejs = require('ejs')
-var fs = require('fs')
-var minimatch = require('minimatch')
-var mkdirp = require('mkdirp')
-var path = require('path')
-var program = require('commander')
-var readline = require('readline')
-var sortedObject = require('sorted-object')
-var util = require('util')
+const ejs = require('ejs')
+const fs = require('fs')
+const minimatch = require('minimatch')
+const mkdirp = require('mkdirp')
+const path = require('path')
+const program = require('commander')
+const readline = require('readline')
+const sortedObject = require('sorted-object')
+const util = require('util')
 
-var MODE_0666 = parseInt('0666', 8)
-var MODE_0755 = parseInt('0755', 8)
-var TEMPLATE_DIR = path.join(__dirname, '..', 'templates')
-var VERSION = require('../package').version
+const MODE_0666 = parseInt('0666', 8)
+const MODE_0755 = parseInt('0755', 8)
+const TEMPLATE_DIR = path.join(__dirname, '..', 'templates')
+const VERSION = require('../package').version
 
-var _exit = process.exit
+const _exit = process.exit
 
 // Re-assign process.exit because of commander
 // TODO: Switch to a different command framework
@@ -68,11 +68,11 @@ if (!exit.exited) {
  */
 
 function around (obj, method, fn) {
-  var old = obj[method]
+  let old = obj[method]
 
   obj[method] = function () {
-    var args = new Array(arguments.length)
-    for (var i = 0; i < args.length; i++) args[i] = arguments[i]
+    let args = new Array(arguments.length)
+    for (let i = 0; i < args.length; i++) args[i] = arguments[i]
     return fn.call(this, old, args)
   }
 }
@@ -82,7 +82,7 @@ function around (obj, method, fn) {
  */
 
 function before (obj, method, fn) {
-  var old = obj[method]
+  let old = obj[method]
 
   obj[method] = function () {
     fn.call(this)
@@ -95,7 +95,7 @@ function before (obj, method, fn) {
  */
 
 function confirm (msg, callback) {
-  var rl = readline.createInterface({
+  let rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   })
@@ -137,7 +137,7 @@ function createApplication (name, dir) {
   console.log()
 
   // Package
-  var pkg = {
+  let pkg = {
     name: name,
     version: '0.0.0',
     private: true,
@@ -151,8 +151,8 @@ function createApplication (name, dir) {
   }
 
   // JavaScript
-  var app = loadTemplate('js/app.js')
-  var www = loadTemplate('js/www')
+  let app = loadTemplate('js/app.js')
+  let www = loadTemplate('js/www')
 
   // App name
   www.locals.name = name
@@ -397,8 +397,8 @@ function exit (code) {
     if (!(draining--)) _exit(code)
   }
 
-  var draining = 0
-  var streams = [process.stdout, process.stderr]
+  let draining = 0
+  const streams = [process.stdout, process.stderr]
 
   exit.exited = true
 
@@ -425,8 +425,8 @@ function launchedFromCmd () {
  */
 
 function loadTemplate (name) {
-  var contents = fs.readFileSync(path.join(__dirname, '..', 'templates', (name + '.ejs')), 'utf-8')
-  var locals = Object.create(null)
+  const contents = fs.readFileSync(path.join(__dirname, '..', 'templates', (name + '.ejs')), 'utf-8')
+  const locals = Object.create(null)
 
   function render () {
     return ejs.render(contents, locals, {
@@ -446,10 +446,10 @@ function loadTemplate (name) {
 
 function main () {
   // Path
-  var destinationPath = program.args.shift() || '.'
+  const destinationPath = program.args.shift() || '.'
 
   // App name
-  var appName = createAppName(path.resolve(destinationPath)) || 'hello-world'
+  const appName = createAppName(path.resolve(destinationPath)) || 'hello-world'
 
   // View engine
   if (program.view === true) {
@@ -492,7 +492,7 @@ function main () {
  */
 
 function mkdir (base, dir) {
-  var loc = path.join(base, dir)
+  const loc = path.join(base, dir)
 
   console.log('   \x1b[36mcreate\x1b[0m : ' + loc + path.sep)
   mkdirp.sync(loc, MODE_0755)
