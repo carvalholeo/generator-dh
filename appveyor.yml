@@ -1,7 +1,5 @@
 environment:
   matrix:
-    - nodejs_version: "8.17"
-    - nodejs_version: "9.11"
     - nodejs_version: "10.24"
     - nodejs_version: "11.15"
     - nodejs_version: "12.12"
