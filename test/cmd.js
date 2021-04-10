@@ -1201,7 +1201,7 @@ function setupTestEnvironment (name) {
 
   before('create environment', function (done) {
     ctx.dir = path.join(TEMP_DIR, name.replace(/[<>]/g, ''))
-    mkdirp.sync(ctx.dir, done)
+    mkdirp(ctx.dir, done)
   })
 
   after('cleanup environment', function (done) {
