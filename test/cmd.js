@@ -17,7 +17,7 @@ const BIN_PATH = path.resolve(path.dirname(PKG_PATH), require(PKG_PATH).bin['exp
 const NPM_INSTALL_TIMEOUT = 300000 // 5 minutes
 const TEMP_DIR = utils.tmpDir()
 
-describe('express(1)', function () {
+describe('express-dh(1)', function () {
   after(function (done) {
     this.timeout(30000)
     rimraf(TEMP_DIR, done)
@@ -42,7 +42,7 @@ describe('express(1)', function () {
     })
 
     it('should provide debug instructions', function () {
-      assert.ok(/DEBUG=express-1-no-args:\* (?:& )?npm start/.test(ctx.stdout))
+      assert.ok(/DEBUG=express-dh-1-no-args:\* (?:& )?npm start/.test(ctx.stdout))
     })
 
     it('should have basic files', function () {
@@ -61,19 +61,19 @@ describe('express(1)', function () {
       const file = path.resolve(ctx.dir, 'package.json')
       const contents = fs.readFileSync(file, 'utf8')
       assert.strictEqual(contents, '{\n' +
-        '  "name": "express-1-no-args",\n' +
+        '  "name": "express-dh-1-no-args",\n' +
         '  "version": "0.0.0",\n' +
         '  "private": true,\n' +
         '  "scripts": {\n' +
         '    "start": "node ./bin/www"\n' +
         '  },\n' +
         '  "dependencies": {\n' +
-        '    "cookie-parser": "~1.4.4",\n' +
-        '    "debug": "~2.6.9",\n' +
-        '    "express": "~4.16.1",\n' +
-        '    "http-errors": "~1.6.3",\n' +
+        '    "cookie-parser": "~1.4.5",\n' +
+        '    "debug": "~4.3.1",\n' +
+        '    "express": "~4.17.1",\n' +
+        '    "http-errors": "~1.8.0",\n' +
         '    "jade": "~1.11.0",\n' +
-        '    "morgan": "~1.9.1"\n' +
+        '    "morgan": "~1.10.0"\n' +
         '  }\n' +
         '}\n')
     })
@@ -173,7 +173,7 @@ describe('express(1)', function () {
     it('should print usage', function (done) {
       runRaw(ctx.dir, ['--foo'], function (err, code, stdout, stderr) {
         if (err) return done(err)
-        assert.ok(/Usage: express /.test(stdout))
+        assert.ok(/Usage: express-dh /.test(stdout))
         assert.ok(/--help/.test(stdout))
         assert.ok(/--version/.test(stdout))
         assert.ok(/error: unknown option/.test(stderr))
@@ -244,7 +244,7 @@ describe('express(1)', function () {
       it('should print usage', function (done) {
         runRaw(ctx.dir, ['--css'], function (err, code, stdout) {
           if (err) return done(err)
-          assert.ok(/Usage: express /.test(stdout))
+          assert.ok(/Usage: express-dh /.test(stdout))
           assert.ok(/--help/.test(stdout))
           assert.ok(/--version/.test(stdout))
           done()
@@ -490,7 +490,7 @@ describe('express(1)', function () {
         if (err) return done(err)
         const files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(files.length, 0)
-        assert.ok(/Usage: express /.test(stdout))
+        assert.ok(/Usage: express-dh /.test(stdout))
         assert.ok(/--help/.test(stdout))
         assert.ok(/--version/.test(stdout))
         done()
@@ -538,7 +538,7 @@ describe('express(1)', function () {
         if (err) return done(err)
         const files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(files.length, 0)
-        assert.ok(/Usage: express /.test(stdout))
+        assert.ok(/Usage: express-dh /.test(stdout))
         assert.ok(/--help/.test(stdout))
         assert.ok(/--version/.test(stdout))
         done()
@@ -680,7 +680,7 @@ describe('express(1)', function () {
       it('should print usage', function (done) {
         runRaw(ctx.dir, ['--view'], function (err, code, stdout) {
           if (err) return done(err)
-          assert.ok(/Usage: express /.test(stdout))
+          assert.ok(/Usage: express-dh /.test(stdout))
           assert.ok(/--help/.test(stdout))
           assert.ok(/--version/.test(stdout))
           done()
@@ -1201,7 +1201,7 @@ function setupTestEnvironment (name) {
 
   before('create environment', function (done) {
     ctx.dir = path.join(TEMP_DIR, name.replace(/[<>]/g, ''))
-    mkdirp(ctx.dir, done)
+    mkdirp.sync(ctx.dir, done)
   })
 
   after('cleanup environment', function (done) {
