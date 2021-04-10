@@ -30,7 +30,8 @@ function parseCreatedFiles (output, dir) {
   let match
 
   for (let i = 0; i < lines.length; i++) {
-    if ((match = /create.*?: (.*)$/.exec(lines[i]))) {
+    match = /create.*?: (.*)$/.exec(lines[i])
+    if (match) {
       let file = match[1]
 
       if (dir) {

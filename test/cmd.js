@@ -28,12 +28,14 @@ describe('express-dh(1)', function () {
 
     it('should create basic app', function (done) {
       runRaw(ctx.dir, [], function (err, code, stdout, stderr) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         ctx.stderr = stderr
         ctx.stdout = stdout
         assert.strictEqual(ctx.files.length, 16)
-        done()
+        return done()
       })
     })
 
@@ -113,9 +115,11 @@ describe('express-dh(1)', function () {
 
       it('should create basic app', function (done) {
         run(ctx0.dir, [], function (err, output) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           assert.strictEqual(utils.parseCreatedFiles(output, ctx0.dir).length, 16)
-          done()
+          return done()
         })
       })
 
@@ -123,7 +127,7 @@ describe('express-dh(1)', function () {
         const file = path.resolve(ctx0.dir, 'package.json')
         const contents = fs.readFileSync(file, 'utf8')
         const name = JSON.parse(contents).name
-        assert.ok(validateNpmName(name).validForNewPackages, 'package name "' + name + '" is valid')
+        assert.ok(validateNpmName(name).validForNewPackages, `package name "${name}" is valid`)
         assert.strictEqual(name, 'foo-bar-baz')
       })
     })
@@ -133,9 +137,11 @@ describe('express-dh(1)', function () {
 
       it('should create basic app', function (done) {
         run(ctx1.dir, [], function (err, output) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           assert.strictEqual(utils.parseCreatedFiles(output, ctx1.dir).length, 16)
-          done()
+          return done()
         })
       })
 
@@ -154,28 +160,34 @@ describe('express-dh(1)', function () {
 
     it('should exit with code 1', function (done) {
       runRaw(ctx.dir, ['--foo'], function (err, code, stdout, stderr) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         assert.strictEqual(code, 1)
-        done()
+        return done()
       })
     })
 
     it('should print usage', function (done) {
       runRaw(ctx.dir, ['--foo'], function (err, code, stdout, stderr) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         assert.ok(/Usage: express-dh /.test(stdout))
         assert.ok(/--help/.test(stdout))
         assert.ok(/--version/.test(stdout))
         assert.ok(/error: unknown option/.test(stderr))
-        done()
+        return done()
       })
     })
 
     it('should print unknown option', function (done) {
       runRaw(ctx.dir, ['--foo'], function (err, code, stdout, stderr) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         assert.ok(/error: unknown option/.test(stderr))
-        done()
+        return done()
       })
     })
   })
@@ -185,12 +197,14 @@ describe('express-dh(1)', function () {
 
     it('should create basic app in directory', function (done) {
       runRaw(ctx.dir, ['foo'], function (err, code, stdout, stderr) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         ctx.stderr = stderr
         ctx.stdout = stdout
         assert.strictEqual(ctx.files.length, 17)
-        done()
+        return done()
       })
     })
 
@@ -225,27 +239,33 @@ describe('express-dh(1)', function () {
 
       it('should exit with code 1', function (done) {
         runRaw(ctx.dir, ['--css'], function (err, code, stdout, stderr) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           assert.strictEqual(code, 1)
-          done()
+          return done()
         })
       })
 
       it('should print usage', function (done) {
         runRaw(ctx.dir, ['--css'], function (err, code, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           assert.ok(/Usage: express-dh /.test(stdout))
           assert.ok(/--help/.test(stdout))
           assert.ok(/--version/.test(stdout))
-          done()
+          return done()
         })
       })
 
       it('should print argument missing', function (done) {
         runRaw(ctx.dir, ['--css'], function (err, code, stdout, stderr) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           assert.ok(/error: option .* argument missing/.test(stderr))
-          done()
+          return done()
         })
       })
     })
@@ -255,10 +275,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with less files', function (done) {
         run(ctx.dir, ['--css', 'less'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
-          done()
+          return done()
         })
       })
 
@@ -311,10 +333,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with sass files', function (done) {
         run(ctx.dir, ['--css', 'sass'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
-          done()
+          return done()
         })
       })
 
@@ -367,10 +391,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with stylus files', function (done) {
         run(ctx.dir, ['--css', 'stylus'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
-          done()
+          return done()
         })
       })
 
@@ -424,10 +450,12 @@ describe('express-dh(1)', function () {
 
     it('should create basic app with ejs templates', function (done) {
       run(ctx.dir, ['--ejs'], function (err, stdout) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 15, 'should have 15 files')
-        done()
+        return done()
       })
     })
 
@@ -448,10 +476,12 @@ describe('express-dh(1)', function () {
 
     it('should create basic app with git files', function (done) {
       run(ctx.dir, ['--git'], function (err, stdout) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 17, 'should have 17 files')
-        done()
+        return done()
       })
     })
 
@@ -477,13 +507,15 @@ describe('express-dh(1)', function () {
 
     it('should print usage', function (done) {
       run(ctx.dir, ['-h'], function (err, stdout) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         const files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(files.length, 0)
         assert.ok(/Usage: express-dh /.test(stdout))
         assert.ok(/--help/.test(stdout))
         assert.ok(/--version/.test(stdout))
-        done()
+        return done()
       })
     })
   })
@@ -493,10 +525,12 @@ describe('express-dh(1)', function () {
 
     it('should create basic app with hbs templates', function (done) {
       run(ctx.dir, ['--hbs'], function (err, stdout) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 16)
-        done()
+        return done()
       })
     })
 
@@ -525,13 +559,15 @@ describe('express-dh(1)', function () {
 
     it('should print usage', function (done) {
       run(ctx.dir, ['--help'], function (err, stdout) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         const files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(files.length, 0)
         assert.ok(/Usage: express-dh /.test(stdout))
         assert.ok(/--help/.test(stdout))
         assert.ok(/--version/.test(stdout))
-        done()
+        return done()
       })
     })
   })
@@ -541,10 +577,12 @@ describe('express-dh(1)', function () {
 
     it('should create basic app with hogan templates', function (done) {
       run(ctx.dir, ['--hogan'], function (err, stdout) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 15)
-        done()
+        return done()
       })
     })
 
@@ -572,10 +610,12 @@ describe('express-dh(1)', function () {
 
     it('should create basic app without view engine', function (done) {
       run(ctx.dir, ['--no-view'], function (err, stdout) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 13)
-        done()
+        return done()
       })
     })
 
@@ -628,10 +668,12 @@ describe('express-dh(1)', function () {
 
     it('should create basic app with pug templates', function (done) {
       run(ctx.dir, ['--pug'], function (err, stdout) {
-        if (err) return done(err)
+        if (err) {
+          return done(err)
+        }
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 16)
-        done()
+        return done()
       })
     })
 
@@ -661,27 +703,33 @@ describe('express-dh(1)', function () {
 
       it('should exit with code 1', function (done) {
         runRaw(ctx.dir, ['--view'], function (err, code, stdout, stderr) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           assert.strictEqual(code, 1)
-          done()
+          return done()
         })
       })
 
       it('should print usage', function (done) {
         runRaw(ctx.dir, ['--view'], function (err, code, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           assert.ok(/Usage: express-dh /.test(stdout))
           assert.ok(/--help/.test(stdout))
           assert.ok(/--version/.test(stdout))
-          done()
+          return done()
         })
       })
 
       it('should print argument missing', function (done) {
         runRaw(ctx.dir, ['--view'], function (err, code, stdout, stderr) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           assert.ok(/error: option .* argument missing/.test(stderr))
-          done()
+          return done()
         })
       })
     })
@@ -691,10 +739,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with dust templates', function (done) {
         run(ctx.dir, ['--view', 'dust'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 15, 'should have 15 files')
-          done()
+          return done()
         })
       })
 
@@ -748,10 +798,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with ejs templates', function (done) {
         run(ctx.dir, ['--view', 'ejs'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 15, 'should have 15 files')
-          done()
+          return done()
         })
       })
 
@@ -805,10 +857,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with hbs templates', function (done) {
         run(ctx.dir, ['--view', 'hbs'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16)
-          done()
+          return done()
         })
       })
 
@@ -870,10 +924,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with hogan templates', function (done) {
         run(ctx.dir, ['--view', 'hjs'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 15)
-          done()
+          return done()
         })
       })
 
@@ -934,10 +990,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with pug templates', function (done) {
         run(ctx.dir, ['--view', 'pug'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16)
-          done()
+          return done()
         })
       })
 
@@ -999,10 +1057,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with twig templates', function (done) {
         run(ctx.dir, ['--view', 'twig'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16)
-          done()
+          return done()
         })
       })
 
@@ -1064,10 +1124,12 @@ describe('express-dh(1)', function () {
 
       it('should create basic app with vash templates', function (done) {
         run(ctx.dir, ['--view', 'vash'], function (err, stdout) {
-          if (err) return done(err)
+          if (err) {
+            return done(err)
+          }
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16)
-          done()
+          return done()
         })
       })
 

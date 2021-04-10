@@ -36,7 +36,7 @@ class AppRunner {
 
       if (!done) {
         done = true
-        callback(new Error('Unexpected app exit with code ' + code))
+        callback(new Error(`Unexpected app exit with code ${code}`))
       }
     })
 
