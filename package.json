@@ -27,7 +27,7 @@
   "repository": "carvalholeo/generator-dh",
   "license": "MIT",
   "dependencies": {
-    "commander": "2.15.1",
+    "commander": "^2.20.0",
     "ejs": "3.1.6",
     "minimatch": "3.0.4",
     "mkdirp": "^0.5.5",

@@ -47,7 +47,7 @@ before(program, 'unknownOption', function () {
 program
   .name('express-dh')
   .version(VERSION, '    --version')
-  .usage('[options] [dir]')
+  .usage('[opcoes] [dir]')
   .option('-i, --integrador', 'adiciona os pacotes usados no projeto integrador')
   .option('-e, --ejs', 'adiciona suporte à engine EJS', renamedOption('--ejs', '--view=ejs'))
   .option('    --pug', 'adiciona suporte à engine PUG', renamedOption('--pug', '--view=pug'))
@@ -212,7 +212,7 @@ function createApplication (name, dir) {
     app.locals.modules.session = 'express-session'
     app.locals.uses.push(`session({
   secret: 'senha super secreta',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
 })`)
 
