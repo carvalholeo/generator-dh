@@ -57,6 +57,7 @@ $ npm start
 Este gerador também pode ser configurado com as seguintes opções da linha de comando.
 
         --version        exibe a versão do gerador
+    -i, --integrador     adiciona os pacotes usados no projeto integrador
     -e, --ejs            adiciona suporte à engine EJS
         --pug            adiciona suporte à engine PUG
         --hbs            adiciona suporte à engine Handlebars

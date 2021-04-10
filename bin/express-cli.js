@@ -48,6 +48,7 @@ program
   .name('express-dh')
   .version(VERSION, '    --version')
   .usage('[options] [dir]')
+  .option('-i, --integrador', 'adiciona os pacotes usados no projeto integrador')
   .option('-e, --ejs', 'adiciona suporte à engine EJS', renamedOption('--ejs', '--view=ejs'))
   .option('    --pug', 'adiciona suporte à engine PUG', renamedOption('--pug', '--view=pug'))
   .option('    --hbs', 'adiciona suporte à engine Handlebars', renamedOption('--hbs', '--view=hbs'))
@@ -72,7 +73,9 @@ function around (obj, method, fn) {
 
   obj[method] = function () {
     const args = new Array(arguments.length)
-    for (let i = 0; i < args.length; i++) args[i] = arguments[i]
+    for (let i = 0; i < args.length; i++) {
+      args[i] = arguments[i]
+    }
     return fn.call(this, old, args)
   }
 }
@@ -102,7 +105,7 @@ function confirm (msg, callback) {
 
   rl.question(msg, function (input) {
     rl.close()
-    callback(/^y|yes|ok|true$/i.test(input))
+    callback(/^y|yes|ok|true|s|sim|aceito|vai$/i.test(input))
   })
 }
 
@@ -186,54 +189,91 @@ function createApplication (name, dir) {
   mkdir(dir, 'public/images')
   mkdir(dir, 'public/stylesheets')
 
+  if (program.integrador) {
+    // Adiciona dependências de produção
+    pkg.dependencies['express-session'] = '~1.17.1'
+    pkg.dependencies['express-validator'] = '~6.10.0'
+    pkg.dependencies['method-override'] = '~3.0.0'
+    pkg.dependencies.sequelize = '~6.6.2'
+    pkg.dependencies.mysql2 = '~2.2.5'
+    pkg.dependencies.mariadb = '~2.5.3'
+    pkg.dependencies.axios = '~0.21.1'
+    pkg.dependencies.bcrypt = '~5.0.1'
+    pkg.dependencies.multer = '~1.4.2'
+
+    // Adiciona dependências de desenvolvimento
+    pkg.devDependencies.nodemon = '~2.0.7'
+    pkg.devDependencies['sequelize-cli'] = '~6.2.0'
+
+    // Adiciona configuração do express-session
+    app.locals.modules.session = 'express-session'
+    app.locals.uses.push(`session({
+      secret: 'senha super secreta',
+      resave: false,
+      saveUninitialized: true,
+    })`)
+
+    // Adiciona configuração do method-override
+    app.locals.modules.methodOverride = 'method-override'
+    app.locals.uses.push('methodOverride("_method")')
+
+    // Adiciona configurações no package.json
+    pkg.scripts.dev = 'npx nodemon ./bin/www'
+
+    // Adiciona configuração de .gitignore
+    program.git = true
+  }
+
   // copy css templates
+  const stylesheetDirectory = `${dir}/public/stylesheets`
   switch (program.css) {
     case 'less':
-      copyTemplateMulti('css', dir + '/public/stylesheets', '*.less')
+      copyTemplateMulti('css', stylesheetDirectory, '*.less')
       break
     case 'stylus':
-      copyTemplateMulti('css', dir + '/public/stylesheets', '*.styl')
+      copyTemplateMulti('css', stylesheetDirectory, '*.styl')
       break
     case 'compass':
-      copyTemplateMulti('css', dir + '/public/stylesheets', '*.scss')
+      copyTemplateMulti('css', stylesheetDirectory, '*.scss')
       break
     case 'sass':
-      copyTemplateMulti('css', dir + '/public/stylesheets', '*.sass')
+      copyTemplateMulti('css', stylesheetDirectory, '*.sass')
       break
     default:
-      copyTemplateMulti('css', dir + '/public/stylesheets', '*.css')
+      copyTemplateMulti('css', stylesheetDirectory, '*.css')
       break
   }
 
   // copy route templates
   mkdir(dir, 'routes')
-  copyTemplateMulti('js/routes', dir + '/routes', '*.js')
+  copyTemplateMulti('js/routes', `${dir}/routes`, '*.js')
 
   if (program.view) {
     // Copy view templates
     mkdir(dir, 'views')
     pkg.dependencies['http-errors'] = '~1.8.0'
+    const viewsDirectory = `${dir}/views`
     switch (program.view) {
       case 'dust':
-        copyTemplateMulti('views', dir + '/views', '*.dust')
+        copyTemplateMulti('views', viewsDirectory, '*.dust')
         break
       case 'ejs':
-        copyTemplateMulti('views', dir + '/views', '*.ejs')
+        copyTemplateMulti('views', viewsDirectory, '*.ejs')
         break
       case 'hbs':
-        copyTemplateMulti('views', dir + '/views', '*.hbs')
+        copyTemplateMulti('views', viewsDirectory, '*.hbs')
         break
       case 'hjs':
-        copyTemplateMulti('views', dir + '/views', '*.hjs')
+        copyTemplateMulti('views', viewsDirectory, '*.hjs')
         break
       case 'pug':
-        copyTemplateMulti('views', dir + '/views', '*.pug')
+        copyTemplateMulti('views', viewsDirectory, '*.pug')
         break
       case 'twig':
-        copyTemplateMulti('views', dir + '/views', '*.twig')
+        copyTemplateMulti('views', viewsDirectory, '*.twig')
         break
       case 'vash':
-        copyTemplateMulti('views', dir + '/views', '*.vash')
+        copyTemplateMulti('views', viewsDirectory, '*.vash')
         break
     }
   } else {
@@ -324,7 +364,7 @@ function createApplication (name, dir) {
 
   // write files
   write(path.join(dir, 'app.js'), app.render())
-  write(path.join(dir, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
+  write(path.join(dir, 'package.json'), `${JSON.stringify(pkg, null, 2)}\n`)
   mkdir(dir, 'bin')
   write(path.join(dir, 'bin/www'), www.render(), MODE_0755)
 
@@ -373,7 +413,9 @@ function createAppName (pathName) {
 
 function emptyDirectory (dir, fn) {
   fs.readdir(dir, function (err, files) {
-    if (err && err.code !== 'ENOENT') throw err
+    if (err && err.code !== 'ENOENT') {
+      throw err
+    }
     fn(!files || !files.length)
   })
 }
@@ -387,7 +429,9 @@ function exit (code) {
   // https://github.com/joyent/node/issues/6247 is just one bug example
   // https://github.com/visionmedia/mocha/issues/333 has a good discussion
   function done () {
-    if (!(draining--)) _exit(code)
+    if (!(draining--)) {
+      _exit(code)
+    }
   }
 
   let draining = 0
@@ -418,7 +462,14 @@ function launchedFromCmd () {
  */
 
 function loadTemplate (name) {
-  const contents = fs.readFileSync(path.join(__dirname, '..', 'templates', (name + '.ejs')), 'utf-8')
+  const contents = fs.readFileSync(
+    path.join(__dirname,
+      '..',
+      'templates',
+      `${name}.ejs`
+    ),
+    'utf-8'
+  )
   const locals = Object.create(null)
 
   function render () {
@@ -446,10 +497,18 @@ function main () {
 
   // View engine
   if (program.view === true) {
-    if (program.ejs) program.view = 'ejs'
-    if (program.hbs) program.view = 'hbs'
-    if (program.hogan) program.view = 'hjs'
-    if (program.pug) program.view = 'pug'
+    if (program.ejs) {
+      program.view = 'ejs'
+    }
+    if (program.hbs) {
+      program.view = 'hbs'
+    }
+    if (program.hogan) {
+      program.view = 'hjs'
+    }
+    if (program.pug) {
+      program.view = 'pug'
+    }
   }
 
   // Default view engine
@@ -462,7 +521,7 @@ function main () {
     if (empty || program.force) {
       createApplication(appName, destinationPath)
     } else {
-      confirm('destination is not empty, continue? [y/N] ', function (ok) {
+      confirm('pasta destino não está vazio, deseja continuar? [s/N] ', function (ok) {
         if (ok) {
           process.stdin.destroy()
           createApplication(appName, destinationPath)
@@ -485,7 +544,7 @@ function main () {
 function mkdir (base, dir) {
   const loc = path.join(base, dir)
 
-  console.log('   \x1b[36mcreate\x1b[0m : ' + loc + path.sep)
+  console.log(`   \x1b[36mcreate\x1b[0m : ${loc}${path.sep}`)
   mkdirp.sync(loc, MODE_0755)
 }
 
@@ -526,5 +585,5 @@ function warning (message) {
 
 function write (file, str, mode) {
   fs.writeFileSync(file, str, { mode: mode || MODE_0666 })
-  console.log('   \x1b[36mcreate\x1b[0m : ' + file)
+  console.log(`   \x1b[36mcreate\x1b[0m : ${file}`)
 }
