@@ -1,57 +1,70 @@
+# Express Generator DH
+
 [![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)
 
-[Express'](https://www.npmjs.com/package/express) application generator.
+Gerador de aplicações [Express](https://www.npmjs.com/package/express), focado nas necessidades dos alunos da [Digital House](https://www.digitalhouse.com/br).
 
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
 [![Linux Build][travis-image]][travis-url]
 [![Windows Build][appveyor-image]][appveyor-url]
 
-## Installation
+## Instalação
 
 ```sh
-$ npm install -g express-generator
+$ npm install -g express-generator-dh
+// Isto vai instalar o express-generator-dh de forma global na sua máquina
 ```
 
-## Quick Start
+## Início Rápido
 
-The quickest way to get started with express is to utilize the executable `express(1)` to generate an application as shown below:
+O caminho mais rápido para começar um projeto express é usar o executável `express-dh(1)`, para gerar uma aplicação, como mostraremos abaixo:
 
-Create the app:
+Criar o app:
 
 ```bash
-$ express --view=hbs /tmp/foo && cd /tmp/foo
+$ express-dh --view=ejs meuProjeto
+// Isto irá criar uma pasta, chamada 'meuProjeto', com suporte à EJS
 ```
 
-Install dependencies:
+Entrar na pasta deste projeto:
+
+```bash
+$ cd meuProjeto
+// Isto faz o terminal entrar na pasta criada
+```
+
+Instalar as dependências:
 
 ```bash
 $ npm install
+// Faz a instalação das dependências do Express e outros pacotes
 ```
 
-Start your Express.js app at `http://localhost:3000/`:
+Iniciar seu app Express.js, no endereço `http://localhost:3000/`:
 
 ```bash
 $ npm start
+// Inicia o servidor para os primeiros testes
 ```
 
-## Command Line Options
+## Opções da Linha de Comando
 
-This generator can also be further configured with the following command line flags.
+Este gerador também pode ser configurado com as seguintes opções da linha de comando.
 
-        --version        output the version number
-    -e, --ejs            add ejs engine support
-        --pug            add pug engine support
-        --hbs            add handlebars engine support
-    -H, --hogan          add hogan.js engine support
-    -v, --view <engine>  add view <engine> support (dust|ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)
-        --no-view        use static html instead of view engine
-    -c, --css <engine>   add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)
-        --git            add .gitignore
-    -f, --force          force on non-empty directory
-    -h, --help           output usage information
+        --version        exibe a versão do gerador
+    -e, --ejs            adiciona suporte à engine EJS
+        --pug            adiciona suporte à engine PUG
+        --hbs            adiciona suporte à engine Handlebars
+    -H, --hogan          adiciona suporte à engine Hogan.js
+    -v, --view <engine>  adiciona suporte à engine <engine> (dust|ejs|hbs|hjs|jade|pug|twig|vash) (o padrão é PUG)
+        --no-view        usa HTML estático ao invés de template engine
+    -c, --css <engine>   adiciona suporte à engine CSS <engine> (less|stylus|compass|sass) (o padrão é CSS puro, texto plano)
+        --git            adiciona .gitignore
+    -f, --force          força a criação em diretórios não-vazios
+    -h, --help           exibe informações de uso e ajuda
 
-## License
+## Licença
 
 [MIT](LICENSE)
 
