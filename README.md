@@ -10,8 +10,8 @@ Gerador de aplicações [Express](https://www.npmjs.com/package/express), focado
 
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
-[![Linux Build][travis-image]][travis-url]
-[![Windows Build][appveyor-image]][appveyor-url]
+Linux [![Linux Build][travis-image]][travis-url]
+Windows [![Windows Build][appveyor-image]][appveyor-url]
 
 ## Instalação
 
@@ -75,9 +75,9 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
 
 [npm-image]: https://img.shields.io/npm/v/express-generator-dh.svg
 [npm-url]: https://npmjs.org/package/express-generator-dh
-[travis-image]: https://img.shields.io/travis/carvalholeo/generator-dh/master.svg?label=linux
+[travis-image]: https://travis-ci.com/carvalholeo/generator-dh.svg?branch=main
 [travis-url]: https://travis-ci.com/carvalholeo/generator-dh
 [appveyor-image]: https://img.shields.io/appveyor/build/carvalholeo/generator-dh?label=windows
-[appveyor-url]: https://ci.appveyor.com/project/carvalholeo/generator
+[appveyor-url]: https://ci.appveyor.com/project/carvalholeo/generator-dh
 [downloads-image]: https://img.shields.io/npm/dm/express-generator-dh
 [downloads-url]: https://www.npmjs.com/package/express-generator-dh
