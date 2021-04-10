@@ -6,9 +6,10 @@ node_js:
   - "13.14"
   - "14.16"
   - "15.14"
-matrix:
+jobs:
   fast_finish: true
-sudo: false
+dist: xenial
+os: linux
 cache:
   directories:
     - node_modules
