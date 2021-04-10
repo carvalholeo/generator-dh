@@ -1,6 +1,10 @@
 # Express Generator DH
 
-[![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)
+<div style="display: flex; justify-content: center; align-items: center;">
+    <img src="https://i.cloudup.com/zfY6lL7eFa-3000x3000.png" width="50%" height="auto" alt="Logo do Framework Express"/>
+    <p style="display: inline-block; padding: 10px; font-size: 1.5rem;">+</p>
+    <img src="https://www.digitalhouse.com/ar/logo-DH.png" width="50%" alt="Logo da Digital House" style="background-color: #fff"/>
+</div>
 
 Gerador de aplicações [Express](https://www.npmjs.com/package/express), focado nas necessidades dos alunos da [Digital House](https://www.digitalhouse.com/br).
 
