@@ -55,11 +55,11 @@ This generator can also be further configured with the following command line fl
 
 [MIT](LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/express-generator.svg
-[npm-url]: https://npmjs.org/package/express-generator
-[travis-image]: https://img.shields.io/travis/expressjs/generator/master.svg?label=linux
-[travis-url]: https://travis-ci.org/expressjs/generator
-[appveyor-image]: https://img.shields.io/appveyor/ci/dougwilson/generator/master.svg?label=windows
-[appveyor-url]: https://ci.appveyor.com/project/dougwilson/generator
-[downloads-image]: https://img.shields.io/npm/dm/express-generator.svg
-[downloads-url]: https://npmjs.org/package/express-generator
+[npm-image]: https://img.shields.io/npm/v/express-generator-dh.svg
+[npm-url]: https://npmjs.org/package/express-generator-dh
+[travis-image]: https://img.shields.io/travis/carvalholeo/generator-dh/master.svg?label=linux
+[travis-url]: https://travis-ci.org/carvalho/generator-dh
+[appveyor-image]: https://img.shields.io/appveyor/build/carvalholeo/generator-dh?label=windows
+[appveyor-url]: https://ci.appveyor.com/project/carvalholeo/generator
+[downloads-image]: https://img.shields.io/npm/dm/express-generator-dh
+[downloads-url]: https://www.npmjs.com/package/express-generator-dh
