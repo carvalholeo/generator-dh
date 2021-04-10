@@ -150,6 +150,9 @@ function createApplication (name, dir) {
     dependencies: {
       debug: '~4.3.1',
       express: '~4.17.1'
+    },
+    devDependencies: {
+
     }
   }
 
@@ -208,10 +211,10 @@ function createApplication (name, dir) {
     // Adiciona configuração do express-session
     app.locals.modules.session = 'express-session'
     app.locals.uses.push(`session({
-      secret: 'senha super secreta',
-      resave: false,
-      saveUninitialized: true,
-    })`)
+  secret: 'senha super secreta',
+  resave: false,
+  saveUninitialized: true,
+})`)
 
     // Adiciona configuração do method-override
     app.locals.modules.methodOverride = 'method-override'
@@ -220,8 +223,9 @@ function createApplication (name, dir) {
     // Adiciona configurações no package.json
     pkg.scripts.dev = 'npx nodemon ./bin/www'
 
-    // Adiciona configuração de .gitignore
+    // Adiciona configuração de .gitignore e de EJS
     program.git = true
+    program.view = 'ejs'
   }
 
   // copy css templates

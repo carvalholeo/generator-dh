@@ -66,7 +66,8 @@ describe('express-dh(1)', function () {
         '    "http-errors": "~1.8.0",\n' +
         '    "morgan": "~1.10.0",\n' +
         '    "pug": "3.0.2"\n' +
-        '  }\n' +
+        '  },\n' +
+        '  "devDependencies": {}\n' +
         '}\n')
     })
 
