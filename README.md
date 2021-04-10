@@ -71,7 +71,7 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
 [npm-image]: https://img.shields.io/npm/v/express-generator-dh.svg
 [npm-url]: https://npmjs.org/package/express-generator-dh
 [travis-image]: https://img.shields.io/travis/carvalholeo/generator-dh/master.svg?label=linux
-[travis-url]: https://travis-ci.org/carvalho/generator-dh
+[travis-url]: https://travis-ci.com/carvalholeo/generator-dh
 [appveyor-image]: https://img.shields.io/appveyor/build/carvalholeo/generator-dh?label=windows
 [appveyor-url]: https://ci.appveyor.com/project/carvalholeo/generator
 [downloads-image]: https://img.shields.io/npm/dm/express-generator-dh
