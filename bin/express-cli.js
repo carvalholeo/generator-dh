@@ -45,7 +45,7 @@ before(program, 'unknownOption', function () {
 })
 
 program
-  .name('express')
+  .name('express-dh')
   .version(VERSION, '    --version')
   .usage('[options] [dir]')
   .option('-e, --ejs', 'add ejs engine support', renamedOption('--ejs', '--view=ejs'))
