@@ -52,7 +52,7 @@ program
   .option('    --pug', 'add pug engine support', renamedOption('--pug', '--view=pug'))
   .option('    --hbs', 'add handlebars engine support', renamedOption('--hbs', '--view=hbs'))
   .option('-H, --hogan', 'add hogan.js engine support', renamedOption('--hogan', '--view=hogan'))
-  .option('-v, --view <engine>', 'add view <engine> support (dust|ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)')
+  .option('-v, --view <engine>', 'add view <engine> support (dust|ejs|hbs|hjs|pug|twig|vash) (defaults to pug)')
   .option('    --no-view', 'use static html instead of view engine')
   .option('-c, --css <engine>', 'add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)')
   .option('    --git', 'add .gitignore')
@@ -226,9 +226,6 @@ function createApplication (name, dir) {
       case 'hjs':
         copyTemplateMulti('views', dir + '/views', '*.hjs')
         break
-      case 'jade':
-        copyTemplateMulti('views', dir + '/views', '*.jade')
-        break
       case 'pug':
         copyTemplateMulti('views', dir + '/views', '*.pug')
         break
@@ -297,10 +294,6 @@ function createApplication (name, dir) {
     case 'hjs':
       app.locals.view = { engine: 'hjs' }
       pkg.dependencies.hjs = '~0.0.6'
-      break
-    case 'jade':
-      app.locals.view = { engine: 'jade' }
-      pkg.dependencies.jade = '~1.11.0'
       break
     case 'pug':
       app.locals.view = { engine: 'pug' }
@@ -461,9 +454,7 @@ function main () {
 
   // Default view engine
   if (program.view === true) {
-    warning('the default view engine will not be jade in future releases\n' +
-      "use `--view=jade' or `--help' for additional options")
-    program.view = 'jade'
+    program.view = 'pug'
   }
 
   // Generate application
