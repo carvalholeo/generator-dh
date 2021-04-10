@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
 <head>
-  <meta>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@model.title</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
+
 <body>
   @html.block('content')
 </body>
+
 </html>
