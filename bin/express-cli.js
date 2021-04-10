@@ -145,8 +145,8 @@ function createApplication (name, dir) {
       start: 'node ./bin/www'
     },
     dependencies: {
-      'debug': '~4.3.1',
-      'express': '~4.17.1'
+      debug: '~4.3.1',
+      express: '~4.17.1'
     }
   }
 
@@ -264,7 +264,7 @@ function createApplication (name, dir) {
     case 'stylus':
       app.locals.modules.stylus = 'stylus'
       app.locals.uses.push("stylus.middleware(path.join(__dirname, 'public'))")
-      pkg.dependencies['stylus'] = '0.54.8'
+      pkg.dependencies.stylus = '0.54.8'
       break
   }
 

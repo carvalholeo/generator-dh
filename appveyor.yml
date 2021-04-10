@@ -23,25 +23,6 @@ install:
       cmd.exe /c "node -pe `"Object.keys(require('./package').devDependencies).join('\n')`"" | `
         sls "^eslint(-|$)" | `
         %{ npm rm --silent --save-dev $_ }
-  # Setup Node.js version-specific dependencies
-  - ps: |
-      # mocha for testing
-      # - use 3.x for Node.js < 4
-      # - use 5.x for Node.js < 6
-      if ([int]$env:nodejs_version.split(".")[0] -lt 4) {
-        npm install --silent --save-dev mocha@3.5.3
-      } elseif ([int]$env:nodejs_version.split(".")[0] -lt 6) {
-        npm install --silent --save-dev mocha@5.2.0
-      }
-  - ps: |
-      # supertest for http calls
-      # - use 2.0.0 for Node.js < 4
-      # - use 3.4.2 for Node.js < 6
-      if ([int]$env:nodejs_version.split(".")[0] -lt 4) {
-        npm install --silent --save-dev supertest@2.0.0
-      } elseif ([int]$env:nodejs_version.split(".")[0] -lt 6) {
-        npm install --silent --save-dev supertest@3.4.2
-      }
   # Update Node.js modules
   - ps: |
       # Prune & rebuild node_modules
@@ -59,4 +40,4 @@ test_script:
       npm --version
   # Run test script
   - npm run test-ci
-version: "{build}"
+version: '{build}'
