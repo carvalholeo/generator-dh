@@ -62,7 +62,7 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "nyc --reporter=lcov mocha --reporter spec --bail --check-leaks test/",
+    "test": "nyc --reporter=lcov mocha --reporter spec --bail --check-leaks test/ --timeout 60000",
     "test-ci": "mocha --reporter spec --check-leaks test/"
   }
 }

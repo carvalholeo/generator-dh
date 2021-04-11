@@ -11,8 +11,7 @@ const {
   runRaw,
   parseCreatedFiles,
   npmInstall,
-  run,
-  sleep
+  run
 } = require('./support/utils')
 
 const validateNpmName = require('validate-npm-package-name')
@@ -20,21 +19,16 @@ const validateNpmName = require('validate-npm-package-name')
 const {
   APP_START_STOP_TIMEOUT,
   NPM_INSTALL_TIMEOUT,
-  TEMP_DIR,
-  TIME_SLEEP
+  TEMP_DIR
 } = require('./support/consts')
-
-sleep(TIME_SLEEP)
 
 describe('express-dh(1)', function () {
   after(function (done) {
-    this.timeout(30000)
+    this.timeout(60000)
     rimraf(TEMP_DIR, done)
   })
 
   describe('(no args)', function () {
-    sleep(TIME_SLEEP)
-
     const ctx = setupTestEnvironment(this.fullTitle())
 
     it('should create basic app', function (done) {
