@@ -2,8 +2,8 @@
 
 const exec = require('child_process').exec
 const kill = require('tree-kill')
-const net = require('net')
-const utils = require('./utils')
+const { connect } = require('net')
+const childEnvironment = require('./utils/childEnvironment')
 
 class AppRunner {
   constructor (dir) {
@@ -20,7 +20,7 @@ class AppRunner {
   start (callback) {
     const app = this
     let done = false
-    const env = utils.childEnvironment()
+    const env = childEnvironment()
 
     env.PORT = String(app.port)
 
@@ -44,7 +44,7 @@ class AppRunner {
       if (done || !app.child) {
         return
       }
-      const socket = net.connect(app.port, app.host)
+      const socket = connect(app.port, app.host)
 
       socket.on('connect', function onConnect () {
         socket.end()
