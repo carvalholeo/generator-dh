@@ -39,5 +39,6 @@ test_script:
       node --version
       npm --version
   # Run test script
-  - npm run test-ci
+  - npm test
+  - npm run lint
 version: '{build}'

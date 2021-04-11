@@ -25,6 +25,9 @@
     "dh"
   ],
   "repository": "carvalholeo/generator-dh",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "license": "MIT",
   "dependencies": {
     "commander": "^2.20.0",
