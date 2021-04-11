@@ -6,9 +6,9 @@ function around (obj, method, fn) {
   const old = obj[method]
 
   obj[method] = function () {
-    const args = new Array(arguments.length)
-    for (let i = 0; i < args.length; i++) {
-      args[i] = arguments[i]
+    const args = []
+    for (let i = 0; i < arguments.length; i++) {
+      args.push(arguments[i])
     }
     return fn.call(this, old, args)
   }

@@ -378,12 +378,12 @@ function main () {
     if (empty || program.force) {
       createApplication(appName, destinationPath)
     } else {
-      confirm('pasta destino não está vazio, deseja continuar? [s/N] ', function (ok) {
+      confirm('a pasta destino não está vazio, deseja continuar? [s/N] ', function (ok) {
         if (ok) {
           process.stdin.destroy()
           createApplication(appName, destinationPath)
         } else {
-          console.error('aborting')
+          console.error('cancelando')
           exit(1)
         }
       })

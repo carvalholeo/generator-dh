@@ -91,7 +91,7 @@ function run (dir, args, callback) {
       return callback(e)
     }
 
-    callback(null, stripColors(stdout))
+    return callback(null, stripColors(stdout))
   })
 }
 
