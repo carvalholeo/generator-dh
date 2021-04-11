@@ -10,8 +10,9 @@ Gerador de aplicações [Express](https://www.npmjs.com/package/express), focado
 
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
-Linux [![Linux Build][gh-workflow-image]][gh-workflow-url]
-Windows [![Windows Build][appveyor-image]][appveyor-url]
+[![Linux Build][gh-workflow-image]][gh-workflow-url]
+[![Windows Build][appveyor-image]][appveyor-url]
+[![CodeQL][codeql-image]][codeql-url]
 
 ## Instalação
 
@@ -81,3 +82,5 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
 [appveyor-url]: https://ci.appveyor.com/project/carvalholeo/generator-dh
 [downloads-image]: https://img.shields.io/npm/dm/express-generator-dh
 [downloads-url]: https://www.npmjs.com/package/express-generator-dh
+[codeql-image]: https://github.com/carvalholeo/generator-dh/actions/workflows/codeql-analysis.yml/badge.svg?branch=main
+[codeql-url]: https://github.com/carvalholeo/generator-dh/actions/workflows/codeql-analysis.yml
