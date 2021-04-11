@@ -18,8 +18,6 @@ jobs:
           - ubuntu-latest
           - ubuntu-18.04
           - ubuntu-16.04
-          - macos-latest
-          - macos-11.0
           - windows-latest
         node_version:
           - 10
@@ -33,7 +31,13 @@ jobs:
         # an extra windows-x86 run:
         include:
           - os: windows-2016
-            node_version: 12
+            node_version:
+              - 10
+              - 11
+              - 12
+              - 13
+              - 14
+              - 15
             architecture: x86
     name:  Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
     steps:
