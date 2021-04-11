@@ -21,8 +21,11 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ${{ matrix.os }}
+
     strategy:
+      fail-fast: false
       matrix:
+        language: [ 'javascript' ]
         os:
           - ubuntu-latest
           - ubuntu-18.04
@@ -30,11 +33,6 @@ jobs:
           - macos-latest
           - macos-11.0
           - windows-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'javascript' ]
 
     steps:
     - name: Checkout repository
