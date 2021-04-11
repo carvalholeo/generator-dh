@@ -1,21 +1,26 @@
 
 const assert = require('assert')
 const AppRunner = require('./support/app-runner')
-const exec = require('child_process').exec
+
 const fs = require('fs')
-const mkdirp = require('mkdirp')
 const path = require('path')
 const request = require('supertest')
 const rimraf = require('rimraf')
-const spawn = require('child_process').spawn
-const utils = require('./support/utils')
+const {
+  setupTestEnvironment,
+  runRaw,
+  parseCreatedFiles,
+  npmInstall,
+  run
+} = require('./support/utils')
+
 const validateNpmName = require('validate-npm-package-name')
 
-const APP_START_STOP_TIMEOUT = 10000
-const PKG_PATH = path.resolve(__dirname, '..', 'package.json')
-const BIN_PATH = path.resolve(path.dirname(PKG_PATH), require(PKG_PATH).bin['express-dh'])
-const NPM_INSTALL_TIMEOUT = 300000 // 5 minutes
-const TEMP_DIR = utils.tmpDir()
+const {
+  APP_START_STOP_TIMEOUT,
+  NPM_INSTALL_TIMEOUT,
+  TEMP_DIR
+} = require('./support/consts')
 
 describe('express-dh(1)', function () {
   after(function (done) {
@@ -31,7 +36,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+        ctx.files = parseCreatedFiles(stdout, ctx.dir)
         ctx.stderr = stderr
         ctx.stdout = stdout
         assert.strictEqual(ctx.files.length, 16)
@@ -119,7 +124,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          assert.strictEqual(utils.parseCreatedFiles(output, ctx0.dir).length, 16)
+          assert.strictEqual(parseCreatedFiles(output, ctx0.dir).length, 16)
           return done()
         })
       })
@@ -141,7 +146,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          assert.strictEqual(utils.parseCreatedFiles(output, ctx1.dir).length, 16)
+          assert.strictEqual(parseCreatedFiles(output, ctx1.dir).length, 16)
           return done()
         })
       })
@@ -201,7 +206,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+        ctx.files = parseCreatedFiles(stdout, ctx.dir)
         ctx.stderr = stderr
         ctx.stdout = stdout
         assert.strictEqual(ctx.files.length, 17)
@@ -279,7 +284,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
           return done()
         })
@@ -337,7 +342,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
           return done()
         })
@@ -395,7 +400,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
           return done()
         })
@@ -454,7 +459,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+        ctx.files = parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 15, 'should have 15 files')
         return done()
       })
@@ -480,7 +485,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+        ctx.files = parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 17, 'should have 17 files')
         return done()
       })
@@ -511,7 +516,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        const files = utils.parseCreatedFiles(stdout, ctx.dir)
+        const files = parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(files.length, 0)
         assert.ok(/Usage: express-dh /.test(stdout))
         assert.ok(/--help/.test(stdout))
@@ -529,7 +534,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+        ctx.files = parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 16)
         return done()
       })
@@ -563,7 +568,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        const files = utils.parseCreatedFiles(stdout, ctx.dir)
+        const files = parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(files.length, 0)
         assert.ok(/Usage: express-dh /.test(stdout))
         assert.ok(/--help/.test(stdout))
@@ -581,7 +586,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+        ctx.files = parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 15)
         return done()
       })
@@ -614,7 +619,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+        ctx.files = parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 13)
         return done()
       })
@@ -672,7 +677,7 @@ describe('express-dh(1)', function () {
         if (err) {
           return done(err)
         }
-        ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+        ctx.files = parseCreatedFiles(stdout, ctx.dir)
         assert.strictEqual(ctx.files.length, 16)
         return done()
       })
@@ -743,7 +748,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 15, 'should have 15 files')
           return done()
         })
@@ -802,7 +807,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 15, 'should have 15 files')
           return done()
         })
@@ -861,7 +866,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16)
           return done()
         })
@@ -928,7 +933,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 15)
           return done()
         })
@@ -994,7 +999,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16)
           return done()
         })
@@ -1061,7 +1066,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16)
           return done()
         })
@@ -1128,7 +1133,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
+          ctx.files = parseCreatedFiles(stdout, ctx.dir)
           assert.strictEqual(ctx.files.length, 16)
           return done()
         })
@@ -1188,79 +1193,3 @@ describe('express-dh(1)', function () {
     })
   })
 })
-
-function npmInstall (dir, callback) {
-  const env = utils.childEnvironment()
-
-  exec('npm install', { cwd: dir, env: env }, function (err, stderr) {
-    if (err) {
-      err.message += stderr
-      callback(err)
-      return
-    }
-
-    callback()
-  })
-}
-
-function run (dir, args, callback) {
-  runRaw(dir, args, function (err, code, stdout, stderr) {
-    if (err) {
-      return callback(err)
-    }
-
-    process.stderr.write(utils.stripWarnings(stderr))
-
-    try {
-      assert.strictEqual(utils.stripWarnings(stderr), '')
-      assert.strictEqual(code, 0)
-    } catch (e) {
-      return callback(e)
-    }
-
-    callback(null, utils.stripColors(stdout))
-  })
-}
-
-function runRaw (dir, args, callback) {
-  const argv = [BIN_PATH].concat(args)
-  const binp = process.argv[0]
-  let stderr = ''
-  let stdout = ''
-
-  const child = spawn(binp, argv, {
-    cwd: dir
-  })
-
-  child.stdout.setEncoding('utf8')
-  child.stdout.on('data', function ondata (str) {
-    stdout += str
-  })
-  child.stderr.setEncoding('utf8')
-  child.stderr.on('data', function ondata (str) {
-    stderr += str
-  })
-
-  child.on('close', onclose)
-  child.on('error', callback)
-
-  function onclose (code) {
-    callback(null, code, stdout, stderr)
-  }
-}
-
-function setupTestEnvironment (name) {
-  const ctx = {}
-
-  before('create environment', function (done) {
-    ctx.dir = path.join(TEMP_DIR, name.replace(/[<>]/g, ''))
-    mkdirp(ctx.dir, done)
-  })
-
-  after('cleanup environment', function (done) {
-    this.timeout(30000)
-    rimraf(ctx.dir, done)
-  })
-
-  return ctx
-}

@@ -1,24 +1,35 @@
 #!/usr/bin/env node
 
-const ejs = require('ejs')
-const fs = require('fs')
-const minimatch = require('minimatch')
-const mkdirp = require('mkdirp')
 const path = require('path')
 const program = require('commander')
-const readline = require('readline')
 const sortedObject = require('sorted-object')
-const util = require('util')
+const { join } = require('path')
+const {
+  readFileSync,
+  readdirSync,
+  sep
+} = require('fs')
+const { sync } = require('mkdirp')
+const { filter } = require('minimatch')
+const { inspect } = require('util')
+const ejs = require('ejs')
 
-const MODE_0666 = parseInt('0666', 8)
-const MODE_0755 = parseInt('0755', 8)
-const TEMPLATE_DIR = path.join(__dirname, '..', 'templates')
-const VERSION = require('../package').version
+const around = require('../src/utils/around')
+const before = require('../src/utils/before')
+const exit = require('../src/utils/exit')
+const confirm = require('../src/utils/confirm')
+const write = require('../src/utils/write')
+const createAppName = require('../src/utils/createAppName')
+const emptyDirectory = require('../src/utils/emptyDirectory')
+const launchedFromCmd = require('../src/utils/launchedFromCmd')
+const renamedOption = require('../src/utils/renamedOption')
 
-const _exit = process.exit
+const {
+  MODE_0755,
+  VERSION,
+  TEMPLATE_DIR
+} = require('../src/utils/consts')
 
-// Re-assign process.exit because of commander
-// TODO: Switch to a different command framework
 process.exit = exit
 
 // CLI
@@ -62,71 +73,6 @@ program
 
 if (!exit.exited) {
   main()
-}
-
-/**
- * Install an around function; AOP.
- */
-
-function around (obj, method, fn) {
-  const old = obj[method]
-
-  obj[method] = function () {
-    const args = new Array(arguments.length)
-    for (let i = 0; i < args.length; i++) {
-      args[i] = arguments[i]
-    }
-    return fn.call(this, old, args)
-  }
-}
-
-/**
- * Install a before function; AOP.
- */
-
-function before (obj, method, fn) {
-  const old = obj[method]
-
-  obj[method] = function () {
-    fn.call(this)
-    old.apply(this, arguments)
-  }
-}
-
-/**
- * Prompt for confirmation on STDOUT/STDIN
- */
-
-function confirm (msg, callback) {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  })
-
-  rl.question(msg, function (input) {
-    rl.close()
-    callback(/^y|yes|ok|true|s|sim|aceito|vai$/i.test(input))
-  })
-}
-
-/**
- * Copy file from template directory.
- */
-
-function copyTemplate (from, to) {
-  write(to, fs.readFileSync(path.join(TEMPLATE_DIR, from), 'utf-8'))
-}
-
-/**
- * Copy multiple files from template directory.
- */
-
-function copyTemplateMulti (fromDir, toDir, nameGlob) {
-  fs.readdirSync(path.join(TEMPLATE_DIR, fromDir))
-    .filter(minimatch.filter(nameGlob, { matchBase: true }))
-    .forEach(function (name) {
-      copyTemplate(path.join(fromDir, name), path.join(toDir, name))
-    })
 }
 
 /**
@@ -396,99 +342,6 @@ function createApplication (name, dir) {
 }
 
 /**
- * Create an app name from a directory path, fitting npm naming requirements.
- *
- * @param {String} pathName
- */
-
-function createAppName (pathName) {
-  return path.basename(pathName)
-    .replace(/[^A-Za-z0-9.-]+/g, '-')
-    .replace(/^[-_.]+|-+$/g, '')
-    .toLowerCase()
-}
-
-/**
- * Check if the given directory `dir` is empty.
- *
- * @param {String} dir
- * @param {Function} fn
- */
-
-function emptyDirectory (dir, fn) {
-  fs.readdir(dir, function (err, files) {
-    if (err && err.code !== 'ENOENT') {
-      throw err
-    }
-    fn(!files || !files.length)
-  })
-}
-
-/**
- * Graceful exit for async STDIO
- */
-
-function exit (code) {
-  // flush output for Node.js Windows pipe bug
-  // https://github.com/joyent/node/issues/6247 is just one bug example
-  // https://github.com/visionmedia/mocha/issues/333 has a good discussion
-  function done () {
-    if (!(draining--)) {
-      _exit(code)
-    }
-  }
-
-  let draining = 0
-  const streams = [process.stdout, process.stderr]
-
-  exit.exited = true
-
-  streams.forEach(function (stream) {
-    // submit empty write request and wait for completion
-    draining += 1
-    stream.write('', done)
-  })
-
-  done()
-}
-
-/**
- * Determine if launched from cmd.exe
- */
-
-function launchedFromCmd () {
-  return process.platform === 'win32' &&
-    process.env._ === undefined
-}
-
-/**
- * Load template file.
- */
-
-function loadTemplate (name) {
-  const contents = fs.readFileSync(
-    path.join(__dirname,
-      '..',
-      'templates',
-      `${name}.ejs`
-    ),
-    'utf-8'
-  )
-  const locals = Object.create(null)
-
-  function render () {
-    return ejs.render(contents, locals, {
-      escape: util.inspect
-    })
-  }
-
-  return {
-    locals: locals,
-    render: render
-  }
-}
-
-/**
  * Main program.
  */
 
@@ -539,6 +392,54 @@ function main () {
 }
 
 /**
+ * Copy file from template directory.
+ */
+
+function copyTemplate (from, to) {
+  write(to, readFileSync(join(TEMPLATE_DIR, from), 'utf-8'))
+}
+
+/**
+ * Load template file.
+ */
+
+function loadTemplate (name) {
+  const contents = readFileSync(
+    join(
+      __dirname,
+      '..',
+      'templates',
+      `${name}.ejs`
+    ),
+    'utf-8'
+  )
+  const locals = Object.create(null)
+
+  function render () {
+    return ejs.render(contents, locals, {
+      escape: inspect
+    })
+  }
+
+  return {
+    locals: locals,
+    render: render
+  }
+}
+
+/**
+ * Copy multiple files from template directory.
+ */
+
+function copyTemplateMulti (fromDir, toDir, nameGlob) {
+  readdirSync(join(TEMPLATE_DIR, fromDir))
+    .filter(filter(nameGlob, { matchBase: true }))
+    .forEach(function (name) {
+      copyTemplate(join(fromDir, name), join(toDir, name))
+    })
+}
+
+/**
  * Make the given dir relative to base.
  *
  * @param {string} base
@@ -546,48 +447,8 @@ function main () {
  */
 
 function mkdir (base, dir) {
-  const loc = path.join(base, dir)
+  const loc = join(base, dir)
 
-  console.log(`   \x1b[36mcreate\x1b[0m : ${loc}${path.sep}`)
-  mkdirp.sync(loc, MODE_0755)
-}
-
-/**
- * Generate a callback function for commander to warn about renamed option.
- *
- * @param {String} originalName
- * @param {String} newName
- */
-
-function renamedOption (originalName, newName) {
-  return function (val) {
-    warning(util.format("option `%s' has been renamed to `%s'", originalName, newName))
-    return val
-  }
-}
-
-/**
- * Display a warning similar to how errors are displayed by commander.
- *
- * @param {String} message
- */
-
-function warning (message) {
-  console.error()
-  message.split('\n').forEach(function (line) {
-    console.error('  warning: %s', line)
-  })
-  console.error()
-}
-
-/**
- * echo str > file.
- *
- * @param {String} file
- * @param {String} str
- */
-
-function write (file, str, mode) {
-  fs.writeFileSync(file, str, { mode: mode || MODE_0666 })
-  console.log(`   \x1b[36mcreate\x1b[0m : ${file}`)
+  console.log(`   \x1b[36mcreate\x1b[0m : ${loc}${sep}`)
+  sync(loc, MODE_0755)
 }
