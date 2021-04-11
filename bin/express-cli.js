@@ -34,7 +34,7 @@ process.exit = exit
 
 // CLI
 
-around(program, 'optionMissingArgument', function (fn, args) {
+around(program, 'optionMissingArgument', (fn, args) => {
   program.outputHelp()
   fn.apply(this, args)
   return { args: [], unknown: [] }
@@ -374,11 +374,11 @@ function main () {
   }
 
   // Generate application
-  emptyDirectory(destinationPath, function (empty) {
+  emptyDirectory(destinationPath, (empty) => {
     if (empty || program.force) {
       createApplication(appName, destinationPath)
     } else {
-      confirm('a pasta destino não está vazio, deseja continuar? [s/N] ', function (ok) {
+      confirm('a pasta destino não está vazio, deseja continuar? [s/N] ', (ok) => {
         if (ok) {
           process.stdin.destroy()
           createApplication(appName, destinationPath)
@@ -434,7 +434,7 @@ function loadTemplate (name) {
 function copyTemplateMulti (fromDir, toDir, nameGlob) {
   readdirSync(join(TEMPLATE_DIR, fromDir))
     .filter(filter(nameGlob, { matchBase: true }))
-    .forEach(function (name) {
+    .forEach(name => {
       copyTemplate(join(fromDir, name), join(toDir, name))
     })
 }

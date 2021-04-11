@@ -6,7 +6,7 @@
 
 function warning (message) {
   console.error()
-  message.split('\n').forEach(function (line) {
+  message.split('\n').forEach(line => {
     console.error('  warning: %s', line)
   })
   console.error()

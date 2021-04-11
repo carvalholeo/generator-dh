@@ -10,7 +10,7 @@ function confirm (msg, callback) {
     output: process.stdout
   })
 
-  rl.question(msg, function (input) {
+  rl.question(msg, input => {
     rl.close()
     callback(/^y|yes|ok|true|s|sim|aceito|vai$/i.test(input))
   })

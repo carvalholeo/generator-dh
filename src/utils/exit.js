@@ -8,7 +8,7 @@ function exit (code) {
   // flush output for Node.js Windows pipe bug
   // https://github.com/joyent/node/issues/6247 is just one bug example
   // https://github.com/visionmedia/mocha/issues/333 has a good discussion
-  function done () {
+  const done = () => {
     draining--
     if (!draining) {
       _exit(code)
@@ -20,7 +20,7 @@ function exit (code) {
 
   exit.exited = true
 
-  streams.forEach(function (stream) {
+  streams.forEach(stream => {
     // submit empty write request and wait for completion
     draining += 1
     stream.write('', done)
