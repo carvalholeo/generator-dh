@@ -165,7 +165,7 @@ describe('express-dh(1)', function () {
     const ctx = setupTestEnvironment(this.fullTitle())
 
     it('should exit with code 1', function (done) {
-      runRaw(ctx.dir, ['--foo'], function (err, code, stdout, stderr) {
+      runRaw(ctx.dir, ['--foo'], function (err, code) {
         if (err) {
           return done(err)
         }
@@ -244,7 +244,7 @@ describe('express-dh(1)', function () {
       const ctx = setupTestEnvironment(this.fullTitle())
 
       it('should exit with code 1', function (done) {
-        runRaw(ctx.dir, ['--css'], function (err, code, stdout, stderr) {
+        runRaw(ctx.dir, ['--css'], function (err, code) {
           if (err) {
             return done(err)
           }
@@ -708,7 +708,7 @@ describe('express-dh(1)', function () {
       const ctx = setupTestEnvironment(this.fullTitle())
 
       it('should exit with code 1', function (done) {
-        runRaw(ctx.dir, ['--view'], function (err, code, stdout, stderr) {
+        runRaw(ctx.dir, ['--view'], function (err, code) {
           if (err) {
             return done(err)
           }
