@@ -17,15 +17,10 @@ install:
   - ps: |
       # Skip updating shrinkwrap / lock
       npm config set shrinkwrap false
-  # Remove all non-test dependencies
-  - ps: |
-      # Remove lint dependencies
-      cmd.exe /c "node -pe `"Object.keys(require('./package').devDependencies).join('\n')`"" | `
-        sls "^eslint(-|$)" | `
-        %{ npm rm --silent --save-dev $_ }
   # Update Node.js modules
   - ps: |
       # Prune & rebuild node_modules
+      npm ci
       if (Test-Path -Path node_modules) {
         npm prune
         npm rebuild
