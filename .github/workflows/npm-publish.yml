@@ -28,7 +28,6 @@ jobs:
           - 15
         architecture:
           - x64
-          - x86
     name:  Node V${{ matrix.node_version }} on ${{ matrix.os }}/${{ matrix.architecture }}
     steps:
       - uses: actions/checkout@v2

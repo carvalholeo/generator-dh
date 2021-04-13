@@ -9,6 +9,10 @@ environment:
 cache:
   - node_modules
 install:
+  # Install gems from ruby to test Node Compass Package
+  - set PATH=C:\Ruby26-x64\bin;%PATH%
+  - gem update --system
+  - gem install compass
   # Install Node.js
   - ps: >-
       try { Install-Product node $env:nodejs_version -ErrorAction Stop }
@@ -17,11 +21,6 @@ install:
   - ps: |
       # Skip updating shrinkwrap / lock
       npm config set shrinkwrap false
-  - ps: |
-      # Install gems from ruby to test Node Compass Package
-      $Env:PATH += ';C:\Ruby26-x64\bin'
-      gem update --system
-      gem install compass
   # Update Node.js modules
   - ps: |
       # Prune & rebuild node_modules
