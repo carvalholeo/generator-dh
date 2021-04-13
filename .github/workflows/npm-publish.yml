@@ -28,17 +28,13 @@ jobs:
           - 15
         architecture:
           - x64
-        ruby:
-          - '2.5'
-          - '2.6'
-          - '2.7'
-          - '3.0'
+          - x86
     name:  Node V${{ matrix.node_version }} on ${{ matrix.os }}/${{ matrix.architecture }}
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: 2.6
       - run: gem update --system
       - run: gem install compass
       - uses: actions/setup-node@v2
