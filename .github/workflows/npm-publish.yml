@@ -13,6 +13,7 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os:
           - ubuntu-latest
@@ -27,9 +28,15 @@ jobs:
           - 15
         architecture:
           - x64
+        ruby: [2.5, 2.6, 2.7, '3.0']
     name:  Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          - run: gem update --system
+          - run: gem install compass
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node_version }}

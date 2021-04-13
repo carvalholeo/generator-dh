@@ -3,11 +3,10 @@
 const path = require('path')
 const program = require('commander')
 const sortedObject = require('sorted-object')
-const { join } = require('path')
+const { join, sep } = require('path')
 const {
   readFileSync,
-  readdirSync,
-  sep
+  readdirSync
 } = require('fs')
 const { sync } = require('mkdirp')
 const { filter } = require('minimatch')
