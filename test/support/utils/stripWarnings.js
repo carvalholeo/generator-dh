@@ -1,5 +1,8 @@
+const RE = require('re2')
+
 function stripWarnings (str) {
-  return str.replace(/\n(?:\x20{2}warning: [^\n]+\n)+\n/g, '')
+  const sanitized = new RE(/\n(?:\x20{2}warning: [^\n]+\n)+\n/g)
+  return str.replace(sanitized, '')
 }
 
 module.exports = stripWarnings
