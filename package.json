@@ -30,7 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.20.0",
+    "commander": "^2.20.3",
     "ejs": "3.1.6",
     "js-string-escape": "^1.0.1",
     "minimatch": "3.0.4",
