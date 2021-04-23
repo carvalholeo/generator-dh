@@ -67,6 +67,7 @@ program
   .option('    --no-view', 'usa HTML estático ao invés de template engine')
   .option('-c, --css <engine>', 'adiciona suporte à engine CSS <engine> (less|stylus|compass|sass) (o padrão é CSS puro, texto plano)')
   .option('    --git', 'adiciona .gitignore')
+  .option('    --dotenv', 'adiciona o pacote dotenv, para trabalhar com variáveis de ambiente. Chama automaticamente --git')
   .option('-f, --force', 'força a criação em diretórios não-vazios')
   .parse(process.argv)
 
@@ -113,6 +114,7 @@ function createApplication (name, dir) {
   app.locals.modules = Object.create(null)
   app.locals.mounts = []
   app.locals.uses = []
+  app.locals.dotenv = false
 
   // Request logger
   app.locals.modules.logger = 'morgan'
@@ -171,6 +173,14 @@ function createApplication (name, dir) {
     // Adiciona configuração de .gitignore e de EJS
     program.git = true
     program.view = 'ejs'
+  }
+
+  if (program.dotenv) {
+    program.git = true
+    app.locals.dotenv = true
+    pkg.dependencies.dotenv = '~8.2.0'
+    copyTemplate('js/env', path.join(dir, '.env'))
+    copyTemplate('js/env.example', path.join(dir, '.env.example'))
   }
 
   // copy css templates

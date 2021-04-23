@@ -1,3 +1,7 @@
+'use strict';
+<% if (dotenv) { -%>
+require('dotenv').config();
+<% } -%>
 <% if (view) { -%>
 const createError = require('http-errors');
 <% } -%>

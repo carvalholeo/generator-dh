@@ -1,0 +1,8 @@
+DB_DIALECT=mysql
+DB_SERVER=127.0.0.1
+DB_DATABASE=meu_banco_de_dados
+DB_USER=usuario
+DB_PASSWORD=senha
+DB_PORT=3306
+
+SERVER_PORT=3000
