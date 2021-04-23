@@ -70,6 +70,9 @@
   "scripts": {
     "lint": "npx eslint .",
     "test": "nyc --reporter=lcov mocha --reporter spec --bail --check-leaks 'test/**/*.spec.js' --timeout 60000",
-    "test-ci": "mocha --reporter spec --check-leaks 'test/**/*.spec.js' --timeout 60000"
+    "test-ci": "mocha --reporter spec --check-leaks 'test/**/*.spec.js' --timeout 60000",
+    "preversion": "npm ci && npm test",
+    "version": "npm run lint && git add -A",
+    "postversion": "git push && git push --tags"
   }
 }
