@@ -43,12 +43,5 @@ describe('express-dh(1)', function () {
     it('should have .gitignore', function () {
       notStrictEqual(ctx.files.indexOf('.gitignore'), -1, 'should have .gitignore file')
     })
-
-    it('should have pug templates', function () {
-      notStrictEqual(ctx.files.indexOf('views/error.pug'), -1)
-      notStrictEqual(ctx.files.indexOf('views/index.pug'), -1)
-      notStrictEqual(ctx.files.indexOf('views/layout.pug'), -1)
-    })
   })
-
 })
