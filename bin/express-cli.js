@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-
-const path = require('path')
 const program = require('commander')
 const sortedObject = require('sorted-object')
-const { join, sep } = require('path')
+const { join, resolve, sep } = require('path')
 const {
   readFileSync,
   readdirSync
@@ -33,7 +31,7 @@ process.exit = exit
 
 // CLI
 
-around(program, 'optionMissingArgument', (fn, args) => {
+around(program, 'optionMissingArgument', function (fn, args) {
   program.outputHelp()
   fn.apply(this, args)
   return { args: [], unknown: [] }
@@ -78,10 +76,10 @@ if (!exit.exited) {
 /**
  * Create application at the given directory.
  *
- * @param {string} name
- * @param {string} dir
+ * @param {string} name Name of the application
+ * @param {string} dir Directory where the app files will be put.
+ * @return {void}
  */
-
 function createApplication (name, dir) {
   console.log()
 
@@ -179,8 +177,8 @@ function createApplication (name, dir) {
     program.git = true
     app.locals.dotenv = true
     pkg.dependencies.dotenv = '~8.2.0'
-    copyTemplate('js/env', path.join(dir, '.env'))
-    copyTemplate('js/env.example', path.join(dir, '.env.example'))
+    copyTemplate('js/env', join(dir, '.env'))
+    copyTemplate('js/env.example', join(dir, '.env.example'))
   }
 
   // copy css templates
@@ -237,7 +235,7 @@ function createApplication (name, dir) {
     }
   } else {
     // Copy extra public files
-    copyTemplate('js/index.html', path.join(dir, 'public/index.html'))
+    copyTemplate('js/index.html', join(dir, 'public/index.html'))
   }
 
   // CSS Engine support
@@ -315,17 +313,17 @@ function createApplication (name, dir) {
   app.locals.uses.push("express.static(path.join(__dirname, 'public'))")
 
   if (program.git) {
-    copyTemplate('js/gitignore', path.join(dir, '.gitignore'))
+    copyTemplate('js/gitignore', join(dir, '.gitignore'))
   }
 
   // sort dependencies like npm(1)
   pkg.dependencies = sortedObject(pkg.dependencies)
 
   // write files
-  write(path.join(dir, 'app.js'), app.render())
-  write(path.join(dir, 'package.json'), `${JSON.stringify(pkg, null, 2)}\n`)
+  write(join(dir, 'app.js'), app.render())
+  write(join(dir, 'package.json'), `${JSON.stringify(pkg, null, 2)}\n`)
   mkdir(dir, 'bin')
-  write(path.join(dir, 'bin/www'), www.render(), MODE_0755)
+  write(join(dir, 'bin/www'), www.render(), MODE_0755)
 
   const prompt = launchedFromCmd() ? '>' : '$'
 
@@ -352,14 +350,14 @@ function createApplication (name, dir) {
 
 /**
  * Main program.
+ * @return {void}
  */
-
 function main () {
   // Path
   const destinationPath = program.args.shift() || '.'
 
   // App name
-  const appName = createAppName(path.resolve(destinationPath)) || 'hello-world'
+  const appName = createAppName(resolve(destinationPath)) || 'hello-world'
 
   // View engine
   if (program.view === true) {
@@ -402,16 +400,19 @@ function main () {
 
 /**
  * Copy file from template directory.
+ * @param {string} from Directory where are the files to copied from.
+ * @param {string} to Directory where are the files will be copied to.
+ * @return {void}
  */
-
 function copyTemplate (from, to) {
   write(to, readFileSync(join(TEMPLATE_DIR, from), 'utf-8'))
 }
 
 /**
  * Load template file.
+ * @param {string} name Name of template to be load
+ * @return {JSON} Returns an object with local params and render method
  */
-
 function loadTemplate (name) {
   const contents = readFileSync(
     join(
@@ -438,8 +439,11 @@ function loadTemplate (name) {
 
 /**
  * Copy multiple files from template directory.
+ * @param {string} fromDir Directory where come the files
+ * @param {string} toDir Directory where go the files
+ * @param {string} nameGlob Pattern to use in array filter method
+ * @return {void}
  */
-
 function copyTemplateMulti (fromDir, toDir, nameGlob) {
   readdirSync(join(TEMPLATE_DIR, fromDir))
     .filter(filter(nameGlob, { matchBase: true }))
@@ -451,10 +455,10 @@ function copyTemplateMulti (fromDir, toDir, nameGlob) {
 /**
  * Make the given dir relative to base.
  *
- * @param {string} base
- * @param {string} dir
+ * @param {string} base Base directory
+ * @param {string} dir Recursive directory
+ * @return {void}
  */
-
 function mkdir (base, dir) {
   const loc = join(base, dir)
 
