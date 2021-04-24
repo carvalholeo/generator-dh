@@ -354,7 +354,7 @@ function createApplication (name, dir) {
  */
 function main () {
   // Path
-  const destinationPath = program.args.shift() ?? '.'
+  const destinationPath = program.args.shift() || '.'
 
   // App name
   const appName = createAppName(resolve(destinationPath)) || 'hello-world'
@@ -382,7 +382,7 @@ function main () {
 
   // Generate application
   emptyDirectory(destinationPath, (empty) => {
-    if (empty ?? program.force) {
+    if (empty || program.force) {
       createApplication(appName, destinationPath)
     } else {
       confirm('a pasta destino não está vazio, deseja continuar? [s/N] ', (ok) => {
