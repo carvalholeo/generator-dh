@@ -85,5 +85,5 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
 [downloads-url]: https://www.npmjs.com/package/express-generator-dh
 [codeql-image]: https://github.com/carvalholeo/generator-dh/actions/workflows/codeql-analysis.yml/badge.svg?branch=main
 [codeql-url]: https://github.com/carvalholeo/generator-dh/actions/workflows/codeql-analysis.yml
-[coverage-image]: (https://coveralls.io/repos/github/carvalholeo/generator-dh/badge.svg?branch=main)
+[coverage-image]: https://coveralls.io/repos/github/carvalholeo/generator-dh/badge.svg?branch=main
 [coverage-url]: https://coveralls.io/github/carvalholeo/generator-dh?branch=main
