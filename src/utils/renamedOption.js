@@ -5,14 +5,17 @@ const warning = require('./warning')
 /**
  * Generate a callback function for commander to warn about renamed option.
  *
- * @param {String} originalName
- * @param {String} newName
+ * @param {String} originalName Name original of program option
+ * @param {String} newName New name of program option
+ * @return {void}
  */
-
 function renamedOption (originalName, newName) {
-  return function (val) {
+  /**
+   * Workaround to show only the correspondent message on user terminal
+   * @return {void}
+   */
+  return () => {
     warning(format("option `%s' has been renamed to `%s'", originalName, newName))
-    return val
   }
 }
 
