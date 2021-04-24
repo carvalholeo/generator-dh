@@ -3,7 +3,12 @@ const jsStringEscape = require('js-string-escape')
 
 const { BIN_PATH } = require('../consts')
 
-function runRaw (dir, args, callback) {
+function runRaw (dir, args, callback, isWindows = false) {
+
+  if (isWindows) {
+    delete process.env._
+  }
+
   const argv = [BIN_PATH].concat(args)
   const binp = jsStringEscape(process.argv[0])
   let stderr = ''
