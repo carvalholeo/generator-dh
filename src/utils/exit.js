@@ -2,8 +2,9 @@ const _exit = process.exit
 
 /**
  * Graceful exit for async STDIO
+ * @param {Number} code Code of exit
+ * @return {void}
  */
-
 function exit (code) {
   // flush output for Node.js Windows pipe bug
   // https://github.com/joyent/node/issues/6247 is just one bug example
