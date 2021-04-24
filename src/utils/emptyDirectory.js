@@ -2,10 +2,10 @@ const { readdir } = require('fs')
 /**
  * Check if the given directory `dir` is empty.
  *
- * @param {String} dir
- * @param {Function} fn
+ * @param {String} dir Directory to be verified if is empty
+ * @param {Function} fn Callback function called when this function were finished
+ * @return {void}
  */
-
 function emptyDirectory (dir, fn) {
   readdir(dir, function (err, files) {
     if (err && err.code !== 'ENOENT') {
