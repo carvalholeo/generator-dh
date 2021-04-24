@@ -15,6 +15,7 @@ Gerador de aplicações [Express](https://www.npmjs.com/package/express), focado
 [![CodeQL][codeql-image]][codeql-url]
 [![Coverage Status][coverage-image]][coverage-url]
 [![Maintainability][maintainability-image]][maintainability-url]
+![Vulnerabilities][vulnerabilities-image]
 
 ## Instalação
 
@@ -90,3 +91,4 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
 [coverage-url]: https://coveralls.io/github/carvalholeo/generator-dh?branch=main
 [maintainability-image]: https://api.codeclimate.com/v1/badges/546438504d4f8ab29922/maintainability
 [maintainability-url]: https://codeclimate.com/github/carvalholeo/generator-dh/maintainability
+[vulnerabilities-image]: https://img.shields.io/snyk/vulnerabilities/npm/express-generator-dh
