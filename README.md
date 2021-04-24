@@ -14,6 +14,7 @@ Gerador de aplicações [Express](https://www.npmjs.com/package/express), focado
 [![Windows Build][appveyor-image]][appveyor-url]
 [![CodeQL][codeql-image]][codeql-url]
 [![Coverage Status][coverage-image]][coverage-url]
+[![Maintainability][maintainability-image]][maintainability-url]
 
 ## Instalação
 
@@ -87,3 +88,5 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
 [codeql-url]: https://github.com/carvalholeo/generator-dh/actions/workflows/codeql-analysis.yml
 [coverage-image]: https://coveralls.io/repos/github/carvalholeo/generator-dh/badge.svg?branch=main
 [coverage-url]: https://coveralls.io/github/carvalholeo/generator-dh?branch=main
+[maintainability-image]: https://api.codeclimate.com/v1/badges/546438504d4f8ab29922/maintainability
+[maintainability-url]: https://codeclimate.com/github/carvalholeo/generator-dh/maintainability
