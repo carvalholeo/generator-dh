@@ -115,7 +115,7 @@ describe('express-dh(1)', function () {
       ok(typeof dependencies['method-override'] === 'string')
     })
 
-    it('should have method-override in package dev dependencies', function () {
+    it('should have sequelize-cli in package dev dependencies', function () {
       const file = resolve(ctx.dir, 'package.json')
       const contents = readFileSync(file, 'utf8')
       const dependencies = JSON.parse(contents).devDependencies
