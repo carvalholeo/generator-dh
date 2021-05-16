@@ -140,6 +140,7 @@ Embora os pré-requisitos acima devam ser cumpridos antes do seu pull request se
 * Limite a primeira linha em 72 caracteres ou menos
 * Indice o número de issues e pull requests de livremente após a primeira linha
 * Cosidere começar a mensagem de commit com um emoji da lista abaixo. Isso é só enfeite.
+  * :rocket: `:rocket:`: quando estiver adicionando funcionalidades ao programa
   * :art: `:art:` quando estiver melhorando o formato/estrutura do código
   * :racehorse: `:racehorse:` quando estiver melhorando performance
   * :memo: `:memo:` quando estiver escrevendo documentação
