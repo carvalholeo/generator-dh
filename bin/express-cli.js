@@ -21,6 +21,8 @@ const emptyDirectory = require('../src/utils/emptyDirectory')
 const launchedFromCmd = require('../src/utils/launchedFromCmd')
 const renamedOption = require('../src/utils/renamedOption')
 
+const silentInstallation = require('../src/silentInstallation')
+
 const {
   MODE_0755,
   VERSION,
@@ -66,6 +68,7 @@ program
   .option('-c, --css <engine>', 'adiciona suporte à engine CSS <engine> (less|stylus|compass|sass) (o padrão é CSS puro, texto plano)')
   .option('    --git', 'adiciona .gitignore')
   .option('    --dotenv', 'adiciona o pacote dotenv, para trabalhar com variáveis de ambiente. Chama automaticamente --git')
+  .option('-s, --silent', 'executa instalação silenciosa (entra no diretório, instala as dependências e faz o primeiro commit)')
   .option('-f, --force', 'força a criação em diretórios não-vazios')
   .parse(process.argv)
 
@@ -179,6 +182,10 @@ function createApplication (name, dir) {
     pkg.dependencies.dotenv = '~8.2.0'
     copyTemplate('js/env', join(dir, '.env'))
     copyTemplate('js/env.example', join(dir, '.env.example'))
+  }
+
+  if (program.silent) {
+    program.git = true
   }
 
   // copy css templates
@@ -327,22 +334,26 @@ function createApplication (name, dir) {
 
   const prompt = launchedFromCmd() ? '>' : '$'
 
-  if (dir !== '.') {
-    console.log()
-    console.log('   change directory:')
-    console.log('     %s cd %s', prompt, dir)
-  }
-
-  console.log()
-  console.log('   install dependencies:')
-  console.log('     %s npm install', prompt)
-  console.log()
-  console.log('   run the app:')
-
-  if (launchedFromCmd()) {
-    console.log('     %s SET DEBUG=%s:* & npm start', prompt, name)
+  if (program.silent) {
+    silentInstallation(dir)
   } else {
-    console.log('     %s DEBUG=%s:* npm start', prompt, name)
+    if (dir !== '.') {
+      console.log()
+      console.log('   change directory:')
+      console.log('     %s cd %s', prompt, dir)
+    }
+
+    console.log()
+    console.log('   install dependencies:')
+    console.log('     %s npm install', prompt)
+    console.log()
+    console.log('   run the app:')
+
+    if (launchedFromCmd()) {
+      console.log('     %s SET DEBUG=%s:* & npm start', prompt, name)
+    } else {
+      console.log('     %s DEBUG=%s:* npm start', prompt, name)
+    }
   }
 
   console.log()
