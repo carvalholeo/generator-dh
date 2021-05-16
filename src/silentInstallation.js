@@ -61,7 +61,7 @@ function silentInstallation (directory) {
       execSync(commitFiles, options)
 
       console.log()
-      console.log(`   \x1b[36mInstalação concluída! \x1b[0m`)
+      console.log(`  \x1b[36m Instalação concluída! \x1b[0m`)
 
     } catch (e) {
       console.error()
