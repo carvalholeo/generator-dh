@@ -52,6 +52,7 @@ describe('express-dh(1)', function () {
 
       console.log(files)
       console.log(ctx)
+      console.log(currentFiles)
 
       notStrictEqual(files.indexOf('bin/www'), -1, 'should have bin/www file')
       notStrictEqual(files.indexOf('app.js'), -1, 'should have app.js file')
