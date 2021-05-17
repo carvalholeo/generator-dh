@@ -11,23 +11,23 @@ const { filter } = require('minimatch')
 const { inspect } = require('util')
 const ejs = require('ejs')
 
-const around = require('../src/utils/around')
-const before = require('../src/utils/before')
-const exit = require('../src/utils/exit')
-const confirm = require('../src/utils/confirm')
-const write = require('../src/utils/write')
-const createAppName = require('../src/utils/createAppName')
-const emptyDirectory = require('../src/utils/emptyDirectory')
-const launchedFromCmd = require('../src/utils/launchedFromCmd')
-const renamedOption = require('../src/utils/renamedOption')
+const around = require('../dist/utils/around')
+const before = require('../dist/utils/before')
+const exit = require('../dist/utils/exit')
+const confirm = require('../dist/utils/confirm')
+const write = require('../dist/utils/write')
+const createAppName = require('../dist/utils/createAppName')
+const emptyDirectory = require('../dist/utils/emptyDirectory')
+const launchedFromCmd = require('../dist/utils/launchedFromCmd')
+const renamedOption = require('../dist/utils/renamedOption')
 
-const silentInstallation = require('../src/silentInstallation')
+const silentInstallation = require('../dist/silentInstallation')
 
 const {
   MODE_0755,
   VERSION,
   TEMPLATE_DIR
-} = require('../src/utils/consts')
+} = require('../dist/utils/consts')
 
 process.exit = exit
 
