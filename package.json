@@ -31,12 +31,14 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.20.3",
+    "core-js": "^3.12.1",
     "ejs": "3.1.6",
     "js-string-escape": "^1.0.1",
     "minimatch": "3.0.4",
     "mkdirp": "^0.5.5",
     "ncp": "^2.0.0",
     "re2": "^1.15.9",
+    "regenerator-runtime": "^0.13.7",
     "sorted-object": "2.0.1"
   },
   "main": "bin/express-cli.js",
@@ -45,6 +47,12 @@
     "express-dh": "./bin/express-cli.js"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.2",
+    "@babel/node": "^7.14.2",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/register": "^7.13.16",
     "eslint": "^7.24.0",
     "eslint-config-standard": "16.0.2",
     "eslint-plugin-import": "2.22.1",
@@ -65,7 +73,7 @@
     "LICENSE",
     "bin/",
     "templates/",
-    "src/utils/"
+    "dist"
   ],
   "scripts": {
     "lint": "npx eslint .",
@@ -73,6 +81,7 @@
     "test-ci": "mocha --reporter spec --check-leaks 'test/**/*.spec.js' --timeout 60000",
     "preversion": "npm ci && npm test",
     "version": "npm run lint && git add -A",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "build": "npx babel ./src --out-dir ./dist"
   }
 }
