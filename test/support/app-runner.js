@@ -31,7 +31,7 @@ class AppRunner {
 
     this.child.stderr.pipe(process.stderr, { end: false })
 
-    this.child.on('exit', function onExit (code) {
+    this.child.on('exit', code => {
       app.child = null
 
       if (!done) {
@@ -46,7 +46,7 @@ class AppRunner {
       }
       const socket = connect(app.port, app.host)
 
-      socket.on('connect', function onConnect () {
+      socket.on('connect', () => {
         socket.end()
 
         if (!done) {
@@ -55,7 +55,7 @@ class AppRunner {
         }
       })
 
-      socket.on('error', function onError (err) {
+      socket.on('error', err => {
         socket.destroy()
 
         if (err.syscall !== 'connect') {
