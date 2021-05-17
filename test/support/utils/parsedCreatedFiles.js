@@ -6,9 +6,9 @@ function parseCreatedFiles (output, dir) {
   const lines = output.split(/[\r\n]+/)
   let match
 
-  for (let i = 0; i < lines.length; i++) {
+  lines.forEach(line => {
     const sanitized = new RE(/create.*?: (.*)$/)
-    match = sanitized.exec(lines[i])
+    match = sanitized.exec(line)
     if (match) {
       let file = match[1]
 
@@ -20,8 +20,7 @@ function parseCreatedFiles (output, dir) {
       file = file.replace(/\\/g, '/')
       files.push(file)
     }
-  }
-
+  })
   return files
 }
 
