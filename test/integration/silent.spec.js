@@ -1,4 +1,3 @@
-const { execSync } = require('child_process')
 const rimraf = require('rimraf')
 const request = require('supertest')
 const { readdirSync } = require('fs')
@@ -21,29 +20,8 @@ const {
 } = require('../support/consts')
 
 describe('express-dh(1)', function () {
-  let email = ''
-  let name = ''
-
-  before(function (done) {
-    try {
-      const options = {
-        encoding: 'utf-8'
-      }
-      name = execSync('git config --global --get user.name', options)
-      email = execSync('git config --global --get user.email', options)
-      execSync('git config --global user.name "John Doe"')
-      execSync('git config --global user.email "john@doe.com"')
-
-      return done()
-    } catch (error) {
-      return done(error)
-    }
-  })
-
   after(function (done) {
     this.timeout(60000)
-    execSync(`git config --global user.name "${name}"`)
-    execSync(`git config --global user.email "${email}"`)
     rimraf(TEMP_DIR, done)
   })
 
@@ -83,7 +61,6 @@ describe('express-dh(1)', function () {
       match(output, / inicializando repositório Git/)
       match(output, / adicionando arquivos ao Git/)
       match(output, / fazendo primeiro commit dos arquivos/)
-      match(output, / Instalação concluída!/)
 
       return done()
     })
