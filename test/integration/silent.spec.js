@@ -1,4 +1,4 @@
-const { exec, execSync } = require('child_process')
+const { execSync } = require('child_process')
 const rimraf = require('rimraf')
 const request = require('supertest')
 const { readdirSync } = require('fs')
@@ -25,22 +25,19 @@ describe('express-dh(1)', function () {
   let name = ''
 
   before(function (done) {
-    exec('git config --global --get user.name', (error, stdout) => {
-      if (error) {
-        return done(error)
+    try {
+      const options = {
+        encoding: 'utf-8'
       }
-      name = stdout
+      name = execSync('git config --global --get user.name', options)
+      email = execSync('git config --global --get user.email', options)
       execSync('git config --global user.name "John Doe"')
-    })
-
-    exec('git config --global --get user.email', (error, stdout) => {
-      if (error) {
-        return done(error)
-      }
-      email = stdout
       execSync('git config --global user.email "john@doe.com"')
-    })
-    done()
+
+      return done()
+    } catch (error) {
+      return done(error)
+    }
   })
 
   after(function (done) {
