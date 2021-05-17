@@ -3,3 +3,4 @@ node_modules
 temp
 templates
 **/spec.js
+dist
