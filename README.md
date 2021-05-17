@@ -71,6 +71,7 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
     -c, --css <engine>   adiciona suporte à engine CSS <engine> (less|stylus|compass|sass) (o padrão é CSS puro, texto plano)
         --git            adiciona .gitignore
         --dotenv         adiciona o pacote dotenv, para trabalhar com variáveis de ambiente. Chama automaticamente --git
+    -s, --silent         executa instalação silenciosa (entra no diretório, instala as dependências e faz o primeiro commit)
     -f, --force          força a criação em diretórios não-vazios
     -h, --help           exibe informações de uso e ajuda
 
