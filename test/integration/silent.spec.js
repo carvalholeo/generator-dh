@@ -50,6 +50,9 @@ describe('express-dh(1)', function () {
       const currentFiles = readdirSync(ctx.dir)
       const { files } = ctx
 
+      console.log(files)
+      console.log(ctx)
+
       notStrictEqual(files.indexOf('bin/www'), -1, 'should have bin/www file')
       notStrictEqual(files.indexOf('app.js'), -1, 'should have app.js file')
       notStrictEqual(files.indexOf('package.json'), -1, 'should have package.json file')
