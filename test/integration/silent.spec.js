@@ -1,10 +1,10 @@
+const { exec, execSync } = require('child_process')
 const rimraf = require('rimraf')
 const request = require('supertest')
 const { readdirSync } = require('fs')
 const {
   strictEqual,
   notStrictEqual,
-  ok,
   match
 } = require('assert')
 
@@ -21,10 +21,43 @@ const {
 } = require('../support/consts')
 
 describe('express-dh(1)', function () {
+  let email = ''
+  let name = ''
+
+  this.beforeAll(function (done) {
+    exec('git config --global --get user.name', (error, stdout) => {
+      if (error) {
+        return done(error)
+      }
+      name = stdout
+      execSync('git config --global user.name "John Doe"')
+    })
+
+    exec('git config --global --get user.email', (error, stdout) => {
+      if (error) {
+        return done(error)
+      }
+      email = stdout
+      execSync('git config --global user.email "john@doe.com"')
+    })
+    done()
+  })
+
+  this.afterAll(function (done) {
+    try {
+      execSync(`git config --global user.name "${name}"`)
+      execSync(`git config --global user.email "${email}"`)
+      done()
+    } catch (error) {
+      done(error)
+    }
+  })
+
   after(function (done) {
     this.timeout(60000)
     rimraf(TEMP_DIR, done)
   })
+
   describe('--silent', function () {
     const ctx = setupTestEnvironment(this.fullTitle())
     let output = ''
@@ -57,8 +90,6 @@ describe('express-dh(1)', function () {
     })
 
     it('should show messages about installation', function (done) {
-      console.log(output)
-
       match(output, / instalando dependências do NPM/)
       match(output, / inicializando repositório Git/)
       match(output, / adicionando arquivos ao Git/)
