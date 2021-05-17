@@ -4,7 +4,8 @@ const { readdirSync } = require('fs')
 const {
   strictEqual,
   notStrictEqual,
-  ok
+  ok,
+  match
 } = require('assert')
 
 const AppRunner = require('../support/app-runner')
@@ -56,13 +57,15 @@ describe('express-dh(1)', function () {
     })
 
     it('should show messages about installation', function (done) {
-        ok(/ instalando dependências do NPM/.test(output))
-        ok(/ inicializando repositório Git/.test(output))
-        ok(/ adicionando arquivos ao Git/.test(output))
-        ok(/ fazendo primeiro commit dos arquivos/.test(output))
-        ok(/ Instalação concluída!/.test(output))
+      console.log(output)
 
-        return done()
+      match(output, / instalando dependências do NPM/)
+      match(output, / inicializando repositório Git/)
+      match(output, / adicionando arquivos ao Git/)
+      match(output, / fazendo primeiro commit dos arquivos/)
+      match(output, / Instalação concluída!/)
+
+      return done()
     })
 
     describe('npm start', function () {
