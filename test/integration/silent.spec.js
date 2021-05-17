@@ -26,12 +26,15 @@ describe('express-dh(1)', function () {
   })
   describe('--silent', function () {
     const ctx = setupTestEnvironment(this.fullTitle())
+    let output = ''
 
     it('should create basic app with all dependencies installed', function (done) {
       runRaw(ctx.dir, ['--silent'], function (err, code, stdout, stderr) {
         if (err || stderr) {
           return done(err)
         }
+
+        output += stdout
 
         ctx.files = parseCreatedFiles(stdout, ctx.dir)
         strictEqual(ctx.files.length, 17, 'should have 17 files')
@@ -48,11 +51,9 @@ describe('express-dh(1)', function () {
 
     it('should have basic files', function () {
       const currentFiles = readdirSync(ctx.dir)
+      delete ctx.files
+      ctx.files = parseCreatedFiles(output, ctx.dir)
       const { files } = ctx
-
-      console.log(files)
-      console.log(ctx)
-      console.log(currentFiles)
 
       notStrictEqual(files.indexOf('bin/www'), -1, 'should have bin/www file')
       notStrictEqual(files.indexOf('app.js'), -1, 'should have app.js file')
