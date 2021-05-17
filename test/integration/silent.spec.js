@@ -51,9 +51,8 @@ describe('express-dh(1)', function () {
 
     it('should have basic files', function () {
       const currentFiles = readdirSync(ctx.dir)
-      delete ctx.files
-      ctx.files = parseCreatedFiles(output, ctx.dir)
-      const { files } = ctx
+      const files = parseCreatedFiles(output, ctx.dir)
+      console.log(files)
 
       notStrictEqual(files.indexOf('bin/www'), -1, 'should have bin/www file')
       notStrictEqual(files.indexOf('app.js'), -1, 'should have app.js file')
