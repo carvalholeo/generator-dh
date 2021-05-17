@@ -24,7 +24,7 @@ describe('express-dh(1)', function () {
   let email = ''
   let name = ''
 
-  this.beforeAll(function (done) {
+  before(function (done) {
     exec('git config --global --get user.name', (error, stdout) => {
       if (error) {
         return done(error)
@@ -43,18 +43,10 @@ describe('express-dh(1)', function () {
     done()
   })
 
-  this.afterAll(function (done) {
-    try {
-      execSync(`git config --global user.name "${name}"`)
-      execSync(`git config --global user.email "${email}"`)
-      done()
-    } catch (error) {
-      done(error)
-    }
-  })
-
   after(function (done) {
     this.timeout(60000)
+    execSync(`git config --global user.name "${name}"`)
+    execSync(`git config --global user.email "${email}"`)
     rimraf(TEMP_DIR, done)
   })
 
