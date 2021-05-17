@@ -34,27 +34,18 @@ describe('express-dh(1)', function () {
           return done(err)
         }
 
-        output += stdout
+        output = stdout
 
         ctx.files = parseCreatedFiles(stdout, ctx.dir)
-        console.log(ctx.files)
         strictEqual(ctx.files.length, 17, 'should have 17 files')
-        console.log(ctx.files)
 
-        ok(/ instalando dependências do NPM/.test(stdout))
-        ok(/ inicializando repositório Git/.test(stdout))
-        ok(/ adicionando arquivos ao Git/.test(stdout))
-        ok(/ fazendo primeiro commit dos arquivos/.test(stdout))
-        ok(/ Instalação concluída!/.test(stdout))
-        console.log(ctx.files)
-
-        done()
+        return done()
       })
     })
 
     it('should have basic files', function () {
       const currentFiles = readdirSync(ctx.dir)
-      const files = parseCreatedFiles(output, ctx.dir)
+      const { files } = ctx
 
       notStrictEqual(files.indexOf('bin/www'), -1, 'should have bin/www file')
       notStrictEqual(files.indexOf('app.js'), -1, 'should have app.js file')
@@ -62,6 +53,16 @@ describe('express-dh(1)', function () {
       notStrictEqual(currentFiles.indexOf('package-lock.json'), -1, 'should have package-lock.json file')
       notStrictEqual(currentFiles.indexOf('.git'), -1, 'should have .git folder')
       notStrictEqual(currentFiles.indexOf('node_modules'), -1, 'should have node_modules folder')
+    })
+
+    it('should show messages about installation', function (done) {
+        ok(/ instalando dependências do NPM/.test(output))
+        ok(/ inicializando repositório Git/.test(output))
+        ok(/ adicionando arquivos ao Git/.test(output))
+        ok(/ fazendo primeiro commit dos arquivos/.test(output))
+        ok(/ Instalação concluída!/.test(output))
+
+        return done()
     })
 
     describe('npm start', function () {
