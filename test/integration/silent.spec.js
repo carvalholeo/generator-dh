@@ -47,14 +47,15 @@ describe('express-dh(1)', function () {
     })
 
     it('should have basic files', function () {
-      const files = readdirSync(ctx.dir)
+      const currentFiles = readdirSync(ctx.dir)
+      const { files } = ctx
 
-      notStrictEqual(ctx.files.indexOf('bin/www'), -1, 'should have bin/www file')
-      notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
-      notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
-      notStrictEqual(files.indexOf('package-lock.json'), -1, 'should have package-lock.json file')
-      notStrictEqual(files.indexOf('.git'), -1, 'should have .git folder')
-      notStrictEqual(files.indexOf('node_modules'), -1, 'should have node_modules folder')
+      notStrictEqual(files.indexOf('bin/www'), -1, 'should have bin/www file')
+      notStrictEqual(files.indexOf('app.js'), -1, 'should have app.js file')
+      notStrictEqual(files.indexOf('package.json'), -1, 'should have package.json file')
+      notStrictEqual(currentFiles.indexOf('package-lock.json'), -1, 'should have package-lock.json file')
+      notStrictEqual(currentFiles.indexOf('.git'), -1, 'should have .git folder')
+      notStrictEqual(currentFiles.indexOf('node_modules'), -1, 'should have node_modules folder')
     })
 
     describe('npm start', function () {
