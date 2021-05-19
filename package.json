@@ -79,8 +79,7 @@
     "lint": "npx eslint .",
     "lint-fix": "npx eslint . --fix",
     "test": "nyc --reporter=lcov mocha --reporter spec --check-leaks --timeout 60000 --retries 2 'test/**/*.spec.js' ",
-    "test-ci": "mocha --reporter spec --check-leaks 'test/**/*.spec.js' --timeout 60000",
-    "preversion": "npm ci && npm test",
+    "preversion": "npm cit",
     "version": "npm run lint && git add -A",
     "postversion": "git push && git push --tags",
     "build": "npx babel ./src --out-dir ./dist"
