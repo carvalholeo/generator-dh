@@ -27,13 +27,7 @@ install:
   # Update Node.js modules
   - ps: |
       # Prune & rebuild node_modules
-      if (Test-Path -Path node_modules) {
-        npm ci
-        npm prune
-      }
       npm rebuild
-  # Install Node.js modules
-  - npm install
 build: off
 test_script:
   # Output version data
@@ -41,6 +35,6 @@ test_script:
       node --version
       npm --version
   # Run test script
-  - npm run test-ci
+  - npm install-ci-test
   - npm run lint
 version: '{build}'
