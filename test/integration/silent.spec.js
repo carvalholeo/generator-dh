@@ -48,9 +48,6 @@ describe('express-dh(1)', function () {
       const currentFiles = readdirSync(ctx.dir)
       const { files } = ctx
 
-      console.log('files', files)
-      console.log('currentFiles', currentFiles)
-
       notStrictEqual(files.indexOf('bin/www'), -1, 'should have bin/www file')
       notStrictEqual(files.indexOf('app.js'), -1, 'should have app.js file')
       notStrictEqual(files.indexOf('package.json'), -1, 'should have package.json file')
@@ -61,7 +58,6 @@ describe('express-dh(1)', function () {
 
     it('should show messages about installation', function (done) {
       const insideMessage = output
-      console.log('inside message', insideMessage)
       ok(/ instalando dependências do NPM/.test(insideMessage))
       ok(/ inicializando repositório Git/.test(insideMessage))
       ok(/ adicionando arquivos ao Git/.test(insideMessage))
