@@ -41,8 +41,8 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           architecture: ${{ matrix.architecture }}
-      - run: npm ci
-      - run: npm test
+      - run: npm rebuild
+      - run: npm install-ci-test
       - run: npm run lint
 
   publish-npm:
