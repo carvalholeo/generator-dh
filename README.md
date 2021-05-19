@@ -11,7 +11,7 @@ Gerador de aplicações [Express](https://www.npmjs.com/package/express), focado
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
 [![Linux Build][gh-workflow-image]][gh-workflow-url]
-[![Windows Build][appveyor-image]][appveyor-url]
+[![Windows Build][gh-windows-workflow-image]][gh-windows-workflow-url]
 [![CodeQL][codeql-image]][codeql-url]
 [![Coverage Status][coverage-image]][coverage-url]
 [![Maintainability][maintainability-image]][maintainability-url]
@@ -83,8 +83,8 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
 [npm-url]: https://npmjs.org/package/express-generator-dh
 [gh-workflow-image]: https://github.com/carvalholeo/generator-dh/actions/workflows/npm-publish.yml/badge.svg?branch=main
 [gh-workflow-url]: https://github.com/carvalholeo/generator-dh/actions/workflows/npm-publish.yml
-[appveyor-image]: https://img.shields.io/appveyor/build/carvalholeo/generator-dh?label=windows
-[appveyor-url]: https://ci.appveyor.com/project/carvalholeo/generator-dh
+[gh-windows-workflow-image]: https://github.com/carvalholeo/generator-dh/actions/workflows/windows-test.yml/badge.svg
+[gh-windows-workflow-url]: https://github.com/carvalholeo/generator-dh/actions/workflows/windows-test.yml
 [downloads-image]: https://img.shields.io/npm/dm/express-generator-dh
 [downloads-url]: https://www.npmjs.com/package/express-generator-dh
 [codeql-image]: https://github.com/carvalholeo/generator-dh/actions/workflows/codeql-analysis.yml/badge.svg?branch=main
