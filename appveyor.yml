@@ -1,3 +1,7 @@
+init:
+  - git config --global core.autocrlf true
+  - git config --global user.name "Jonh Doe"
+  - git config --global user.email "john@doe.com"
 environment:
   matrix:
     - nodejs_version: "10.24"
