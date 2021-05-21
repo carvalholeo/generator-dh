@@ -44,7 +44,7 @@
   "main": "bin/express-cli.js",
   "preferGlobal": true,
   "bin": {
-    "express-dh": "./bin/express-cli.js"
+    "express-dh": "./bin/express-cli.min.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -71,7 +71,7 @@
   },
   "files": [
     "LICENSE",
-    "bin/",
+    "bin/express-cli.min.js",
     "templates/",
     "dist"
   ],
