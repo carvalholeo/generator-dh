@@ -82,6 +82,6 @@
     "preversion": "npm cit",
     "version": "npm run lint && git add -A",
     "postversion": "git push && git push --tags",
-    "build": "npx babel ./src --out-dir ./dist"
+    "build": "npx babel ./src --out-dir ./dist && npx babel ./bin/express-cli.js --out-file ./bin/express-cli.min.js"
   }
 }
