@@ -4,3 +4,4 @@ temp
 templates
 **/spec.js
 dist
+bin/express-cli.min.js
