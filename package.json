@@ -40,7 +40,7 @@
     "regenerator-runtime": "^0.13.7",
     "sorted-object": "2.0.1"
   },
-  "main": "bin/express-cli.js",
+  "main": "bin/express-cli.min.js",
   "preferGlobal": true,
   "bin": {
     "express-dh": "./bin/express-cli.min.js"
