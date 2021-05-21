@@ -31,7 +31,6 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.20.3",
-    "core-js": "^3.12.1",
     "ejs": "3.1.6",
     "js-string-escape": "^1.0.1",
     "minimatch": "3.0.4",
@@ -53,6 +52,7 @@
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.14.2",
     "@babel/register": "^7.13.16",
+    "core-js": "^3.12.1",
     "eslint": "^7.25.0",
     "eslint-config-standard": "16.0.2",
     "eslint-plugin-import": "2.22.1",
