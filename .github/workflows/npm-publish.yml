@@ -42,7 +42,7 @@ jobs:
           node-version: ${{ matrix.node_version }}
           architecture: ${{ matrix.architecture }}
       - run: npm rebuild
-      - run: npm install-ci-test
+      - run: npm install-test
       - run: npm run lint
 
   publish-npm:
@@ -56,7 +56,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
+      - run: npm install
       - run: npm run build
       - run: npm publish
         env:
