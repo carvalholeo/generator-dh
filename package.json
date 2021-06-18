@@ -30,7 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.20.3",
+    "commander": "^7.2.0",
     "ejs": "3.1.6",
     "js-string-escape": "^1.0.1",
     "minimatch": "3.0.4",
@@ -77,12 +77,13 @@
     "dist"
   ],
   "scripts": {
+    "build": "npx babel ./src --out-dir ./dist && npx babel ./bin/express-cli.js --out-file ./bin/express-cli.min.js",
     "lint": "npx eslint .",
     "lint-fix": "npx eslint . --fix",
+    "pretest": "npm run build",
     "test": "nyc --reporter=lcov mocha --reporter spec --check-leaks --timeout 60000 --retries 2 'test/**/*.spec.js' ",
     "preversion": "npm it",
     "version": "npm run lint && git add -A",
-    "postversion": "git push && git push --tags",
-    "build": "npx babel ./src --out-dir ./dist && npx babel ./bin/express-cli.js --out-file ./bin/express-cli.min.js"
+    "postversion": "git push && git push --tags"
   }
 }
