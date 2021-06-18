@@ -41,7 +41,7 @@ describe('express-dh(1)', function () {
         ctx.files = parseCreatedFiles(stdout, ctx.dir)
         ctx.stderr = stderr
         ctx.stdout = stdout
-        strictEqual(ctx.files.length, 16)
+        strictEqual(ctx.files.length, 16, 'should have 16 files')
         return done()
       })
     })
@@ -126,7 +126,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          strictEqual(parseCreatedFiles(output, ctx0.dir).length, 16)
+          strictEqual(parseCreatedFiles(output, ctx0.dir).length, 16, 'should have 16 files')
           return done()
         })
       })
@@ -148,7 +148,7 @@ describe('express-dh(1)', function () {
           if (err) {
             return done(err)
           }
-          strictEqual(parseCreatedFiles(output, ctx1.dir).length, 16)
+          strictEqual(parseCreatedFiles(output, ctx1.dir).length, 16, 'should have 16 files')
           return done()
         })
       })

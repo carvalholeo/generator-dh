@@ -38,7 +38,7 @@ describe('express-dh(1)', function () {
             return done(err)
           }
           ctx.files = parseCreatedFiles(stdout, ctx.dir)
-          strictEqual(ctx.files.length, 16)
+          strictEqual(ctx.files.length, 16, 'should have 16 files')
           return done()
         })
       })
