@@ -29,7 +29,7 @@ describe('express-dh(1)', function () {
           return done(err)
         }
         const files = parseCreatedFiles(stdout, ctx.dir)
-        strictEqual(files.length, 0)
+        strictEqual(files.length, 0, 'should not have any file')
         ok(/Usage: express-dh /.test(stdout))
         ok(/--help/.test(stdout))
         ok(/--version/.test(stdout))
