@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const program = require('commander')
+const { program } = require('commander')
 const sortedObject = require('sorted-object')
 const { join, resolve, sep } = require('path')
 const {
@@ -55,6 +55,7 @@ before(program, 'unknownOption', function () {
 })
 
 program
+  .storeOptionsAsProperties()
   .name('express-dh')
   .version(VERSION, '    --version')
   .usage('[opcoes] [dir]')
@@ -71,6 +72,10 @@ program
   .option('-s, --silent', 'executa instalação silenciosa (entra no diretório, instala as dependências e faz o primeiro commit)')
   .option('-f, --force', 'força a criação em diretórios não-vazios')
   .parse(process.argv)
+
+if (typeof program.view === 'undefined') {
+  program.view = true
+}
 
 if (!exit.exited) {
   main()
