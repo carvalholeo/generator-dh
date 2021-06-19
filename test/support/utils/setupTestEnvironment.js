@@ -1,5 +1,5 @@
 const { join } = require('path')
-const { mkdirp, rm } = require('fs-extra')
+const { mkdirp, remove } = require('fs-extra')
 
 const { TEMP_DIR } = require('../consts')
 
@@ -13,12 +13,7 @@ function setupTestEnvironment (name) {
 
   after('cleanup environment', function (done) {
     this.timeout(30000)
-    rm(ctx.dir, {
-      force: true,
-      recursive: true
-    })
-      .then(() => done())
-      .catch(error => done(error))
+    remove(ctx.dir, done)
   })
 
   return ctx
