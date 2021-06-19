@@ -4,7 +4,7 @@ const {
   ok
 } = require('assert')
 const { resolve } = require('path')
-const { readFileSync, rm } = require('fs-extra')
+const { readFileSync, remove } = require('fs-extra')
 
 const {
   setupTestEnvironment,
@@ -19,12 +19,7 @@ const {
 describe('express-dh(1)', function () {
   after(function (done) {
     this.timeout(60000)
-    rm(TEMP_DIR, {
-      force: true,
-      recursive: true
-    })
-      .then(() => done())
-      .catch(error => done(error))
+    remove(TEMP_DIR, done)
   })
 
   describe('--integrador, -i', function () {

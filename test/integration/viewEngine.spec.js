@@ -1,4 +1,4 @@
-const { rm } = require('fs-extra')
+const { remove } = require('fs-extra')
 const {
   strictEqual,
   ok
@@ -16,12 +16,7 @@ const {
 describe('express-dh(1)', function () {
   after(function (done) {
     this.timeout(60000)
-    rm(TEMP_DIR, {
-      force: true,
-      recursive: true
-    })
-      .then(() => done())
-      .catch(error => done(error))
+    remove(TEMP_DIR, done)
   })
 
   describe('--view <engine>', function () {

@@ -1,5 +1,5 @@
 const request = require('supertest')
-const { readdirSync, rm } = require('fs-extra')
+const { readdirSync, remove } = require('fs-extra')
 const {
   strictEqual,
   notStrictEqual,
@@ -21,12 +21,7 @@ const {
 describe('express-dh(1)', function () {
   after(function (done) {
     this.timeout(60000)
-    rm(TEMP_DIR, {
-      force: true,
-      recursive: true
-    })
-      .then(() => done())
-      .catch(error => done(error))
+    remove(TEMP_DIR, done)
   })
 
   describe('--silent', function () {

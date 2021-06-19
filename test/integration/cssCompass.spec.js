@@ -1,4 +1,4 @@
-const fs = require('fs-extra')
+const { remove } = require('fs-extra')
 const request = require('supertest')
 const {
   strictEqual,
@@ -22,12 +22,7 @@ const {
 describe('express-dh(1)', function () {
   after(function (done) {
     this.timeout(60000)
-    fs.rm(TEMP_DIR, {
-      force: true,
-      recursive: true
-    })
-      .then(() => done())
-      .catch(error => done(error))
+    remove(TEMP_DIR, done)
   })
 
   describe('--css <engine>', function () {
