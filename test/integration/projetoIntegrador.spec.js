@@ -1,11 +1,10 @@
-const { rm } = require('fs-extra')
 const {
   strictEqual,
   notStrictEqual,
   ok
 } = require('assert')
 const { resolve } = require('path')
-const { readFileSync } = require('fs')
+const { readFileSync, rm } = require('fs-extra')
 
 const {
   setupTestEnvironment,

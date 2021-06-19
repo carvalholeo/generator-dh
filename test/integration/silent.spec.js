@@ -1,6 +1,5 @@
-const { rm } = require('fs-extra')
 const request = require('supertest')
-const { readdirSync } = require('fs')
+const { readdirSync, rm } = require('fs-extra')
 const {
   strictEqual,
   notStrictEqual,
