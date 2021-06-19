@@ -1,1 +1,1 @@
-"use strict";var _require=require("fs"),readdir=_require.readdir;function emptyDirectory(dir,fn){readdir(dir,function(err,files){if(err&&err.code!=="ENOENT"){throw err}fn(!files||!files.length)})}module.exports=emptyDirectory;
+"use strict";var _require=require("fs-extra"),readdir=_require.readdir;function emptyDirectory(dir,fn){readdir(dir,function(err,files){if(err&&err.code!=="ENOENT"){throw err}fn(!files||!files.length)})}module.exports=emptyDirectory;

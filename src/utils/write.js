@@ -1,4 +1,4 @@
-const { writeFileSync } = require('fs')
+const { writeFileSync } = require('fs-extra')
 
 const { MODE_0666 } = require('./consts')
 
