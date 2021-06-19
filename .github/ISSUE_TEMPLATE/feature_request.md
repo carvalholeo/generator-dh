@@ -8,7 +8,7 @@ assignees: ''
 ---
 **Por favor, não reporte vulnerabilidades de segurança aqui**! Temos uma política de segurança com os detalhes de como proceder nesses casos, que deve ser seguido antes da liberação da brecha ao público. Consulte na raiz deste repositório.
 
-**Antes de mais nada, agradecemos por nos ajudar a melhorar esse pacote!** Por favor, leia o template abaixo e responda todas as questões relevantes. Seu trabalho adicional aqui é extremamente apreciada e nos ajuda a responder tão rápido quanto possível. Para perguntas gerais, consulte as perguntas frequentes, na aba Wiki aqui no GitHub ou entre no nosso servidor no Discord (link de convite disponível no guia de contribuição, na pasta raiz do repositório). Finalemente, para evitar duplicações, por favor faça uma pesquisa nas issues abertas antes de enviar uma aqui.
+**Antes de mais nada, agradecemos por nos ajudar a melhorar esse pacote!** Por favor, leia o template abaixo e responda todas as questões relevantes. Seu trabalho adicional aqui é extremamente apreciada e nos ajuda a responder tão rápido quanto possível. Para perguntas gerais, consulte as perguntas frequentes, na aba Wiki aqui no GitHub ou entre no nosso servidor no Discord (link de convite disponível no guia de contribuição, na pasta raiz do repositório). Finalmente, para evitar duplicações, por favor faça uma pesquisa nas issues abertas antes de enviar uma aqui.
 
 Ao enviar uma issue para o repositório, você está concordando expressamente com os termos do Código de Conduta (ver arquivo CODE_OF_CONDUCT.md, na pasta raiz do repositório).
 

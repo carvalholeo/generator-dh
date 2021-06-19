@@ -1,4 +1,4 @@
-Ao enviar um Pull Request (PR) para este repositório, você concorda com os termos do Código de Conduta (ver arquivo CODE_OF_CONDUCT.md, na pasta raiz do repositório). Por favor, leia o guia de contribuição (ver arquivo CONTRIBUTING.md, na pasta raiz do repositório), para criar e enivar um PR de alta qualidade para este repositório.
+Ao enviar um Pull Request (PR) para este repositório, você concorda com os termos do Código de Conduta (ver arquivo CODE_OF_CONDUCT.md, na pasta raiz do repositório). Por favor, leia o guia de contribuição (ver arquivo CONTRIBUTING.md, na pasta raiz do repositório), para criar e enviar um PR de alta qualidade para este repositório.
 
 ### Descrição
 
@@ -31,6 +31,6 @@ Ao enviar um Pull Request (PR) para este repositório, você concorda com os ter
 
 ### Checklist
 
-- [ ] Eu adicionei documentação para as novas/alteradas funcionalidade neste PR na Wiki do Repositório
+- [ ] Eu adicionei documentação para as funcionalidades novas/alteradas neste PR na Wiki do Repositório
 - [ ] Todos os status checks para testes, formatação e segurança do GitHub estão passando
 - [ ] Estou usando a branch base correta, se não estiver usando a branch `main`
