@@ -1,4 +1,4 @@
-const { rm } = require('fs-extra')
+const fs = require('fs-extra')
 const request = require('supertest')
 const {
   strictEqual,
@@ -22,7 +22,7 @@ const {
 describe('express-dh(1)', function () {
   after(function (done) {
     this.timeout(60000)
-    rm(TEMP_DIR, {
+    fs.rm(TEMP_DIR, {
       force: true,
       recursive: true
     })
