@@ -1,4 +1,4 @@
-const { readdir } = require('fs')
+const { readdir } = require('fs-extra')
 /**
  * Check if the given directory `dir` is empty.
  *
