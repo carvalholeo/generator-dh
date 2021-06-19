@@ -1,4 +1,4 @@
-const rimraf = require('rimraf')
+const { rm } = require('fs-extra')
 const request = require('supertest')
 const {
   strictEqual,
@@ -22,7 +22,12 @@ const {
 describe('express-dh(1)', function () {
   after(function (done) {
     this.timeout(60000)
-    rimraf(TEMP_DIR, done)
+    rm(TEMP_DIR, {
+      force: true,
+      recursive: true
+    })
+      .then(() => done())
+      .catch(error => done(error))
   })
 
   describe('--view <engine>', function () {

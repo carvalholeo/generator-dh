@@ -6,7 +6,7 @@ const {
   readFileSync,
   readdirSync
 } = require('fs')
-const { sync } = require('mkdirp')
+const { mkdirpSync } = require('fs-extra')
 const { filter } = require('minimatch')
 const { inspect } = require('util')
 const ejs = require('ejs')
@@ -479,5 +479,5 @@ function mkdir (base, dir) {
   const loc = join(base, dir)
 
   console.log(`   \x1b[36mcreate\x1b[0m : ${loc}${sep}`)
-  sync(loc, MODE_0755)
+  mkdirpSync(loc, MODE_0755)
 }
