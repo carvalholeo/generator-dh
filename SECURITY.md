@@ -14,6 +14,7 @@ Falhas ou vulnerabilidades de versões sem suporte podem não ser respondidas, s
 
 | Versão  | É suportada?       | Vai depreciar em breve? |
 | ------- | ------------------ | ----------------------- |
+| 4.7.x   | :white_check_mark: | :x:                     |
 | 4.6.x   | :white_check_mark: | :x:                     |
 | 4.5.x   | :white_check_mark: | :x:                     |
 | 4.4.x   | :white_check_mark: | :x:                     |
