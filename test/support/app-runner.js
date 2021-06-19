@@ -1,6 +1,6 @@
 'use strict'
 
-const exec = require('child_process').exec
+const { exec } = require('child_process')
 const kill = require('tree-kill')
 const { connect } = require('net')
 const childEnvironment = require('./utils/childEnvironment')

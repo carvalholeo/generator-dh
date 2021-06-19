@@ -1,5 +1,4 @@
-const { rm } = require('fs-extra')
-const { readFileSync } = require('fs')
+const { readFileSync, rm } = require('fs-extra')
 const { resolve } = require('path')
 const request = require('supertest')
 const {

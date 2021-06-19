@@ -1,5 +1,5 @@
 
-const { mkdirSync } = require('fs')
+const { mkdirSync } = require('fs-extra')
 const { tmpdir } = require('os')
 const { sync } = require('uid-safe')
 const { join } = require('path')
