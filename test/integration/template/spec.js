@@ -1,5 +1,5 @@
 const validateNpmName = require('validate-npm-package-name')
-const { readFileSync, rm } = require('fs-extra')
+const { readFileSync, remove } = require('fs-extra')
 const { resolve } = require('path')
 const request = require('supertest')
 const {
@@ -26,12 +26,7 @@ const {
 describe('express-dh(1)', function () {
   after(function (done) {
     this.timeout(60000)
-    rm(TEMP_DIR, {
-      force: true,
-      recursive: true
-    })
-      .then(() => done())
-      .catch(error => done(error))
+    remove(TEMP_DIR, done)
   })
 
 })
