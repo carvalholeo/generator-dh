@@ -13,7 +13,6 @@ const ejs = require('ejs')
 
 const around = require('../dist/utils/around')
 const before = require('../dist/utils/before')
-const exit = require('../dist/utils/exit')
 const confirm = require('../dist/utils/confirm')
 const write = require('../dist/utils/write')
 const createAppName = require('../dist/utils/createAppName')
@@ -23,13 +22,13 @@ const renamedOption = require('../dist/utils/renamedOption')
 
 const silentInstallation = require('../dist/silentInstallation')
 
+const exit = process.exit
+
 const {
   MODE_0755,
   VERSION,
   TEMPLATE_DIR
 } = require('../dist/utils/consts')
-
-process.exit = exit
 
 // CLI
 
@@ -77,9 +76,7 @@ if (typeof program.view === 'undefined') {
   program.view = true
 }
 
-if (!exit.exited) {
-  main()
-}
+main()
 
 /**
  * Create application at the given directory.
