@@ -1,1 +1,0 @@
-"use strict";var _exit=process.exit;function exit(code){var done=function done(){draining--;if(!draining){_exit(code)}};var draining=0;var streams=[process.stdout,process.stderr];exit.exited=true;streams.forEach(function(stream){draining+=1;stream.write("",done)});done()}module.exports=exit;
