@@ -69,6 +69,7 @@ program
   .option('    --git', 'adiciona .gitignore')
   .option('    --dotenv', 'adiciona o pacote dotenv, para trabalhar com variáveis de ambiente. Chama automaticamente --git')
   .option('-s, --silent', 'executa instalação silenciosa (entra no diretório, instala as dependências e faz o primeiro commit)')
+  .option('-a, --api', 'usar um template de web api sem uma view engine')
   .option('-f, --force', 'força a criação em diretórios não-vazios')
   .parse(process.argv)
 
@@ -212,7 +213,12 @@ function createApplication (name, dir) {
 
   // copy route templates
   mkdir(dir, 'routes')
-  copyTemplateMulti('js/routes', `${dir}/routes`, '*.js')
+  // eslint-disable-next-line no-negated-condition
+  if (!program.api) {
+    copyTemplateMulti('js/routes', `${dir}/routes`, '*.js')
+  } else {
+    copyTemplateMulti('js/routes/api', `${dir}/routes`, '*.js')
+  }
 
   if (program.view) {
     // Copy view templates
@@ -242,6 +248,12 @@ function createApplication (name, dir) {
         copyTemplateMulti('views', viewsDirectory, '*.vash')
         break
     }
+  } else if (program.api) {
+    pkg.dependencies['http-errors'] = '~1.8.0'
+    pkg.dependencies['express-validator'] = '~6.10.0'
+    pkg.dependencies.jsonwebtoken = '^8.5.1'
+    pkg.dependencies.helmet = '^4.4.1'
+    pkg.dependencies.cors = '^2.8.5'
   } else {
     // Copy extra public files
     copyTemplate('js/index.html', join(dir, 'public/index.html'))
@@ -271,13 +283,19 @@ function createApplication (name, dir) {
       break
   }
 
-  // Index router mount
-  app.locals.localModules.indexRouter = './routes/index'
-  app.locals.mounts.push({ path: '/', code: 'indexRouter' })
+  if (program.api) {
+    // Value router mount
+    app.locals.localModules.apiRouter = './routes/values'
+    app.locals.mounts.push({ path: '/api', code: 'apiRouter' })
+  } else {
+    // Index router mount
+    app.locals.localModules.indexRouter = './routes/index'
+    app.locals.mounts.push({ path: '/', code: 'indexRouter' })
 
-  // User router mount
-  app.locals.localModules.usersRouter = './routes/users'
-  app.locals.mounts.push({ path: '/users', code: 'usersRouter' })
+    // User router mount
+    app.locals.localModules.usersRouter = './routes/users'
+    app.locals.mounts.push({ path: '/users', code: 'usersRouter' })
+  }
 
   // Template support
   switch (program.view) {
@@ -317,6 +335,8 @@ function createApplication (name, dir) {
       app.locals.view = false
       break
   }
+
+  app.locals.api = program.api
 
   // Static files
   app.locals.uses.push("express.static(path.join(__dirname, 'public'))")
@@ -389,8 +409,10 @@ function main () {
   }
 
   // Default view engine
-  if (program.view === true) {
+  if (program.view === true && !program.api) {
     program.view = 'pug'
+  } else if (program.api) {
+    program.view = false
   }
 
   // Generate application
