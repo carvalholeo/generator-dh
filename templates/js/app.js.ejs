@@ -2,7 +2,7 @@
 <% if (dotenv) { -%>
 require('dotenv').config();
 <% } -%>
-<% if (view) { -%>
+<% if (view || api) { -%>
 const createError = require('http-errors');
 <% } -%>
 const express = require('express');
@@ -17,7 +17,7 @@ const <%- variable %> = require('<%- localModules[variable] %>');
 
 const app = express();
 
-<% if (view) { -%>
+<% if (view || api) { -%>
 // view engine setup
 <% if (view.render) { -%>
 app.engine('<%- view.engine %>', <%- view.render %>);
@@ -34,7 +34,7 @@ app.use(<%- use %>);
 app.use(<%= mount.path %>, <%- mount.code %>);
 <% }); -%>
 
-<% if (view) { -%>
+<% if (view || api) { -%>
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
@@ -48,7 +48,12 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
+  <% if (view) { -%>
   res.render('error');
+  <% } -%>
+  <% if (api) { -%>
+  res.json({ 'message' : err.message });
+  <% } -%>
 });
 
 <% } -%>
