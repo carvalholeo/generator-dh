@@ -213,11 +213,10 @@ function createApplication (name, dir) {
 
   // copy route templates
   mkdir(dir, 'routes')
-  // eslint-disable-next-line no-negated-condition
-  if (!program.api) {
-    copyTemplateMulti('js/routes', `${dir}/routes`, '*.js')
-  } else {
+  if (program.api) {
     copyTemplateMulti('js/routes/api', `${dir}/routes`, '*.js')
+  } else {
+    copyTemplateMulti('js/routes', `${dir}/routes`, '*.js')
   }
 
   if (program.view) {
