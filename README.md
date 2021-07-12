@@ -17,13 +17,6 @@ Gerador de aplicações [Express](https://www.npmjs.com/package/express), focado
 [![Maintainability][maintainability-image]][maintainability-url]
 ![Vulnerabilities][vulnerabilities-image]
 
-## Instalação
-
-```sh
-$ npm install -g express-generator-dh
-// Isto vai instalar o express-generator-dh de forma global na sua máquina
-```
-
 ## Início Rápido
 
 O caminho mais rápido para começar um projeto express é usar o executável `express-dh(1)`, para gerar uma aplicação, como mostraremos abaixo:
@@ -31,7 +24,7 @@ O caminho mais rápido para começar um projeto express é usar o executável `e
 Criar o app:
 
 ```bash
-$ express-dh --view=ejs meuProjeto
+$ npx express-dh --view=ejs meuProjeto
 // Isto irá criar uma pasta, chamada 'meuProjeto', com suporte à EJS
 ```
 
