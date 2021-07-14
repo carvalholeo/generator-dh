@@ -35,14 +35,13 @@
     "fs-extra": "^10.0.0",
     "js-string-escape": "^1.0.1",
     "minimatch": "3.0.4",
-    "re2": "^1.16.0",
     "regenerator-runtime": "^0.13.7",
     "sorted-object": "2.0.1"
   },
   "main": "bin/express-cli.min.js",
   "preferGlobal": true,
   "bin": {
-    "express-dh": "./bin/express-cli.min.js"
+    "express-generator-dh": "./bin/express-cli.min.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
