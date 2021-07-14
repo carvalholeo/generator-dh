@@ -19,12 +19,12 @@ Gerador de aplicações [Express](https://www.npmjs.com/package/express), focado
 
 ## Início Rápido
 
-O caminho mais rápido para começar um projeto express é usar o executável `express-dh(1)`, para gerar uma aplicação, como mostraremos abaixo:
+O caminho mais rápido para começar um projeto express é usar o executável `express-generator-dh`, para gerar uma aplicação, como o exemplo abaixo:
 
 Criar o app:
 
 ```bash
-$ npx express-dh --view=ejs meuProjeto
+$ npx express-generator-dh --view ejs meuProjeto
 // Isto irá criar uma pasta, chamada 'meuProjeto', com suporte à EJS
 ```
 
@@ -55,10 +55,6 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
 
         --version        exibe a versão do gerador
     -i, --integrador     adiciona os pacotes usados no projeto integrador
-    -e, --ejs            adiciona suporte à engine EJS
-        --pug            adiciona suporte à engine PUG
-        --hbs            adiciona suporte à engine Handlebars
-    -H, --hogan          adiciona suporte à engine Hogan.js
     -v, --view <engine>  adiciona suporte à engine <engine> (dust|ejs|hbs|hjs|jade|pug|twig|vash) (o padrão é PUG)
         --no-view        usa HTML estático ao invés de template engine
     -c, --css <engine>   adiciona suporte à engine CSS <engine> (less|stylus|compass|sass) (o padrão é CSS puro, texto plano)
