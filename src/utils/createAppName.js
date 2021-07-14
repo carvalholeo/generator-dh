@@ -1,5 +1,4 @@
 const { basename } = require('path')
-const RE = require('re2')
 
 /**
  * Create an app name from a directory path, fitting npm naming requirements.
@@ -7,7 +6,7 @@ const RE = require('re2')
  * @return {string} Return a string sanitized for the app name provided
  */
 function createAppName (pathName) {
-  const sanitized = new RE(/^[-_.]+|-+$/g)
+  const sanitized = new RegExp(/^[-_.]+|-+$/g)
   return basename(pathName)
     .replace(/[^A-Za-z0-9.-]+/g, '-')
     .replace(sanitized, '')

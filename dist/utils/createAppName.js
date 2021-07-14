@@ -1,1 +1,1 @@
-"use strict";var _require=require("path"),basename=_require.basename;var RE=require("re2");function createAppName(pathName){var sanitized=new RE(/^[-_.]+|-+$/g);return basename(pathName).replace(/[^A-Za-z0-9.-]+/g,"-").replace(sanitized,"").toLowerCase()}module.exports=createAppName;
+"use strict";var _require=require("path"),basename=_require.basename;function createAppName(pathName){var sanitized=new RegExp(/^[-_.]+|-+$/g);return basename(pathName).replace(/[^A-Za-z0-9.-]+/g,"-").replace(sanitized,"").toLowerCase()}module.exports=createAppName;

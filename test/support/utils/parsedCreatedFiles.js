@@ -1,5 +1,4 @@
 const { resolve, relative } = require('path')
-const RE = require('re2')
 
 function parseCreatedFiles (output, dir) {
   const files = []
@@ -7,7 +6,7 @@ function parseCreatedFiles (output, dir) {
   let match
 
   lines.forEach(line => {
-    const sanitized = new RE(/create.*?: (.*)$/)
+    const sanitized = new RegExp(/create.*?: (.*)$/)
     match = sanitized.exec(line)
     if (match) {
       let file = match[1]
