@@ -1,7 +1,7 @@
 
 # Express Generator DH
 
-## Contibuindo com o projeto
+## Contribuindo com o projeto
 
 :+1::tada: Antes de mais nada, muito obrigado por tirar um tempo para contribuir! :tada::+1:
 
@@ -30,7 +30,7 @@ A seguir, você tem um conjunto de diretrizes para contribuir com o Express Gene
 
 ## Código de Conduta
 
-Este projeto e todos os que contém o sufixo ``-dh`` no nome do repositório (e que estão no repositório do Léo Carvalho), são regidos pelo [Código de Conduta](CODE_OF_CONDUCT.md). Ao contribuir (discutindo mudanças, melhorias ou qualquer outo processo), espera-se que você siga este código. Por favor, ao perceber comportamentos inaceitáveis, relate para [leo@leocarvalho.dev](mailtto:leo@leocarvalho.dev).
+Este projeto e todos os que contém o sufixo ``-dh`` no nome do repositório (e que estão no repositório do Léo Carvalho), são regidos pelo [Código de Conduta](CODE_OF_CONDUCT.md). Ao contribuir (discutindo mudanças, melhorias ou qualquer outro processo), espera-se que você siga este código. Por favor, ao perceber comportamentos inaceitáveis, relate para [leo@leocarvalho.dev](mailtto:leo@leocarvalho.dev).
 
 ## Eu não quero ler tudo isso, eu só tenho uma pergunta!!!
 
@@ -47,7 +47,7 @@ Nós temos um canal de mensagens com FAQ e onde a comunidade pode conversar e tr
 
 Esperamos que você entenda que é um serviço de chat assíncrono, ou seja, pode levar um tempo para alguém responder &mdash; SEJA PACIENTE!
 
-Para entrar no nosso servidor no Discord, [acesse o link de convite][convite-discord] (o [Código de Conduta](#código-de-conduta) daqui se aplica no sevidor, também).
+Para entrar no nosso servidor no Discord, [acesse o link de convite][convite-discord] (o [Código de Conduta](#código-de-conduta) daqui se aplica no servidor, também).
 
 ## O que eu preciso saber antes de começar?
 
@@ -85,7 +85,7 @@ Explique o problema e inclua detalhes adicionais para ajudar os desenvolvedores 
 * **Descreva os exatos passos que reprduzem o problema**, com tantos detalhes quanto for possível. Por exemplo, comece explicando o como o projeto foi instalado (o gerenciador de pacotes, como NPM ou Yarn), o comando exato na execução, sistema operacional, qual o terminal (como PowerShell, prompt de comando, Bash, Zsh, etc). Outro ponto importante na sua descrição, é dizer **não somente o que você tentou fazer, mas explicar o motivo**. Por exemplo, você está tentando usar um motor de renderização no Projeto Integrador diferente de EJS, junto com a opção de instalar os pacotes padrão do PI e apareceu um erro, tente descrever o que aconteceu ao executar.
 * **Forneça exemplos específicos para demonstrar os passos**. Inclua links para arquivos ou projetos do GitHub, ou copie e cole trechos do erro, em que você usa esses exemplos. Se você estiver fornecendo trechos de erro copiados, use o [bloco de código Markdown](https://help.github.com/articles/markdown-basics/#multiple-lines).
 * **Descreva o comportamento observado depois de seguir os passos** e aponte qual é exatamente o problema com aquele comportamento.
-* **Explique que comportamente você estava esperando e por quê**
+* **Explique que comportamento você estava esperando e por quê**
 * **Inclua prints/capturas de tela e GIFs** que mostrem você seguindo os passos descritos e demonstrem o problema de forma inequívoca.
 * **Se o problema é relacionado à performance ou memória**, inclua uma captura de tela de um gerenciador de tarefas no seu relato.
 * **Confirme programas e processos** que estão sendo executados durante a apresentação da falha.
@@ -127,9 +127,9 @@ Pedimos que siga estes passos para ter sua contribuição aceita pelos desenvolv
 
 1. Siga as intruções disponíveis [no modelo](PULL_REQUEST_TEMPLATE.md)
 2. Siga as [diretrizes de estilo](#diretrizes-de-estilo)
-3. Depois de enviar seu pull request, verifique se todos os [status checks](https://help.github.com/articles/about-status-checks/) estão passando. <details><summary>E se um dos status checks falharem?</summary>Se um status check falhar, mas você acredita que a falha não tem relação com a mudança que você fez no código, por getnileza, deixe um comentário no pull request explicando os motivos que você acha que a falha não tem ligação. Um mantenedor vai tentar re-executar a esteira de verificações para você. Se for concluído que a falha era um falso positivo, então vamos abrir uma issue para tentar identificar a origem da falha nos testes.</details>
+3. Depois de enviar seu pull request, verifique se todos os [status checks](https://help.github.com/articles/about-status-checks/) estão passando. <details><summary>E se um dos status checks falharem?</summary>Se um status check falhar, mas você acredita que a falha não tem relação com a mudança que você fez no código, por gentileza, deixe um comentário no pull request explicando os motivos que você acha que a falha não tem ligação. Um mantenedor vai tentar re-executar a esteira de verificações para você. Se for concluído que a falha era um falso positivo, então vamos abrir uma issue para tentar identificar a origem da falha nos testes.</details>
 
-Embora os pré-requisitos acima devam ser cumpridos antes do seu pull request ser revisado, os resvisores podem solicitar a você algum esforço adicional para o design de código, testes, organização de arquivos ou outras mudanças antes que o pull request possa ser completamente aceito e integrado ao código principal.
+Embora os pré-requisitos acima devam ser cumpridos antes do seu pull request ser revisado, os revisores podem solicitar a você algum esforço adicional para o design de código, testes, organização de arquivos ou outras mudanças antes que o pull request possa ser completamente aceito e integrado ao código principal.
 
 ## Diretrizes de estilo
 
@@ -138,8 +138,8 @@ Embora os pré-requisitos acima devam ser cumpridos antes do seu pull request se
 * Use o tempo verbal presente ("Adiciona opção", não "Adicionada opção")
 * Use o modo imperativo ("Mudar arquivo X", não "Muda arquivo X")
 * Limite a primeira linha em 72 caracteres ou menos
-* Indice o número de issues e pull requests de livremente após a primeira linha
-* Cosidere começar a mensagem de commit com um emoji da lista abaixo. Isso é só enfeite.
+* Indique o número de issues e pull requests de livremente após a primeira linha
+* Considere começar a mensagem de commit com um emoji da lista abaixo. Isso é só enfeite.
   * :rocket: `:rocket:`: quando estiver adicionando funcionalidades ao programa
   * :art: `:art:` quando estiver melhorando o formato/estrutura do código
   * :racehorse: `:racehorse:` quando estiver melhorando performance
@@ -189,7 +189,7 @@ Também, pode executar o comando `npm run lint-fix` periodicamente, para corrigi
 
 ### Guia de estilo de especificações
 
-* Incua uma especificação bem formulada e bem estruturada usando [Mocha](https://mochajs.org/) na pasta `./test`.
+* Inclua uma especificação bem formulada e bem estruturada usando [Mocha](https://mochajs.org/) na pasta `./test`.
 * Trate `describe` como um pronome ou situação
 * Trate `it` como uma declaração sobre o estado ou como uma operação muda um estado
 
@@ -215,7 +215,7 @@ describe('um cachorro', () => {
 
 Esta seção lista os rótulos que usamos para nos ajudar a rastrear e gerenciar as issues e pull requests.
 
-O [GitHub search](https://help.github.com/articles/searching-issues/) torna fácil o uso de rótulos para encontrar grupo de issues ou pull requests que possam te interessam. Por exemplo, você pode se intereaar nas [issues abertas que estão marcadas como bugs, mas que ainda precisam ser reproduzidas](https://github.com/search?q=is%3Aopen+is%3Aissue+repo%3Acarvalholeo%2Fgenerator-dh+label%3Abug+label%3Aneeds-reproduction) ou quem sabe [pull requests abertas no repositório que ainda não tenham sido revisados](https://github.com/search?q=is%3Aopen+is%3Apr+repo%3Acarvalholeo%2Fgenerator-dh+comments%3A0). Para ajudar a encontrar issues e pull requests, cada rótulo estpá listado com o link de busca para encontrar itens com aquele rótulo no repositório somente. Nós encorajamos você a dar uma lida sobre [outros filtros de pesquisa](https://help.github.com/articles/searching-issues/), que pode te ajudar a escrever pesquisas mais focadas.
+O [GitHub search](https://help.github.com/articles/searching-issues/) torna fácil o uso de rótulos para encontrar grupo de issues ou pull requests que possam te interessam. Por exemplo, você pode se interessar nas [issues abertas que estão marcadas como bugs, mas que ainda precisam ser reproduzidas](https://github.com/search?q=is%3Aopen+is%3Aissue+repo%3Acarvalholeo%2Fgenerator-dh+label%3Abug+label%3Aneeds-reproduction) ou quem sabe [pull requests abertas no repositório que ainda não tenham sido revisados](https://github.com/search?q=is%3Aopen+is%3Apr+repo%3Acarvalholeo%2Fgenerator-dh+comments%3A0). Para ajudar a encontrar issues e pull requests, cada rótulo está listado com o link de busca para encontrar itens com aquele rótulo no repositório somente. Nós encorajamos você a dar uma lida sobre [outros filtros de pesquisa](https://help.github.com/articles/searching-issues/), que pode te ajudar a escrever pesquisas mais focadas.
 
 Os rótulos são agrupados livremente por sua finalidade, mas não é necessário que cada problema tenha um rótulo de cada grupo ou que um problema não possa ter mais de um rótulo do mesmo grupo.
 
@@ -227,7 +227,7 @@ Os rótulos são agrupados livremente por sua finalidade, mas não é necessári
 | `bug` | [search][search-repo-label-bug] | Bugs confirmados ou relatos que muito provavelmente são bugs. |
 | `question` | [search][search-repo-label-question] | Questões que são mais que relatos de bugs ou pedidos de recursos (p.ex. como eu faço X coisa). |
 | `feedback` | [search][search-repo-label-feedback] | Feedback geral, mais do que relatos de bugs ou pedidos de recursos. |
-| `help-wanted` | [search][search-repo-label-help-wanted] | O time de desenvolvmento ficaria agradecido se recebesse ajuda da comunidade ao resolver essas issues. |
+| `help-wanted` | [search][search-repo-label-help-wanted] | O time de desenvolvimento ficaria agradecido se recebesse ajuda da comunidade ao resolver essas issues. |
 | `beginner` | [search][search-repo-label-beginner] | Issues menos complexas, que poderiam ser um bom ponto de partida para trabalhar por aqueles usuários que queiram ajudar. |
 | `more-information-needed` | [search][search-repo-label-more-information-needed] | Mais informações precisam ser coletadas sobre estes problemas ou pedidos de recursos (p.ex. passos para reproduzir). |
 | `needs-reproduction` | [search][search-repo-label-needs-reproduction] | Em geral bugs, mas não puderam ser reproduzidos de forma confiável. |
