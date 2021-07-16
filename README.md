@@ -55,7 +55,7 @@ Este gerador também pode ser configurado com as seguintes opções da linha de 
 
         --version        exibe a versão do gerador
     -i, --integrador     adiciona os pacotes usados no projeto integrador
-    -v, --view <engine>  adiciona suporte à engine <engine> (dust|ejs|hbs|hjs|jade|pug|twig|vash) (o padrão é PUG)
+    -v, --view <engine>  adiciona suporte à engine <engine> (dust|ejs|hbs|hjs|jade|pug|twig|vash|jsx) (o padrão é PUG)
         --no-view        usa HTML estático ao invés de template engine
     -c, --css <engine>   adiciona suporte à engine CSS <engine> (less|stylus|compass|sass) (o padrão é CSS puro, texto plano)
         --git            adiciona .gitignore

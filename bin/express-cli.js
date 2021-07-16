@@ -63,7 +63,7 @@ program
   .option('    --pug', 'adiciona suporte à engine PUG', renamedOption('--pug', '--view=pug'))
   .option('    --hbs', 'adiciona suporte à engine Handlebars', renamedOption('--hbs', '--view=hbs'))
   .option('-H, --hogan', 'adiciona suporte à engine Hogan.js', renamedOption('--hogan', '--view=hogan'))
-  .option('-v, --view <engine>', 'adiciona suporte à engine <engine> (dust|ejs|hbs|hjs|jade|pug|twig|vash) (o padrão é PUG)')
+  .option('-v, --view <engine>', 'adiciona suporte à engine <engine> (dust|ejs|hbs|hjs|jade|pug|twig|vash|jsx) (o padrão é PUG)')
   .option('    --no-view', 'usa HTML estático ao invés de template engine')
   .option('-c, --css <engine>', 'adiciona suporte à engine CSS <engine> (less|stylus|compass|sass) (o padrão é CSS puro, texto plano)')
   .option('    --git', 'adiciona .gitignore')
