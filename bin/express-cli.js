@@ -246,6 +246,9 @@ function createApplication (name, dir) {
       case 'vash':
         copyTemplateMulti('views', viewsDirectory, '*.vash')
         break
+      case 'jsx':
+        copyTemplateMulti('views', viewsDirectory, '*.jsx')
+        break
     }
   } else if (program.api) {
     pkg.dependencies['http-errors'] = '~1.8.0'
@@ -329,6 +332,15 @@ function createApplication (name, dir) {
     case 'vash':
       app.locals.view = { engine: 'vash' }
       pkg.dependencies.vash = '~0.13.0'
+      break
+    case 'jsx':
+      app.locals.view = {
+        engine: 'jsx',
+        render: "require('express-react-views').createEngine()"
+      }
+      pkg.dependencies['express-react-views'] = '^0.11.0'
+      pkg.dependencies.react = '^17.0.2'
+      pkg.dependencies['react-dom'] = '^17.0.2'
       break
     default:
       app.locals.view = false
