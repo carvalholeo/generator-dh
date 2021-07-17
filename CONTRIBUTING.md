@@ -1,7 +1,7 @@
 
 # Express Generator DH
 
-## Contibuindo com o projeto
+## Contribuindo com o projeto
 
 :+1::tada: Antes de mais nada, muito obrigado por tirar um tempo para contribuir! :tada::+1:
 
@@ -100,7 +100,7 @@ Forneça mais contexto ao responder as seguintes perguntas?
 Inclua detalhes sobre sua configuração e ambiente:
 
 * **Qual as versões do Node e do NPM você está usando?** Pegue a versão digitando os comandos ``node -`` e ``npm -v`` no terminal de sua preferência.
-* **Qual o nome e a versão do Sistema Operacional que você está usando?** No Windows, pegue a versão digitando apertando do teclado, simultaneamente, as teclas ``Win + R``, e então digite ``winver``. Para distribuições Linux, verifique junto com a pessoa desenvolvedora qual o comando permite fazer isso.
+* **Qual o nome e a versão do Sistema Operacional que você está usando?** No Windows, pegue a versão digitando apertando do teclado, simultaneamente, as teclas ``Win + R``, e então digite ``winver``. Para distribuições Linux, verifique junto com a equipe de desenvolvimento do sistema qual o comando permite fazer isso.
 * **Você está tentando rodar através de uma instância do Docker ou outro esquema de container?** Se sim, envie o link ou uma cópia do Dockerfile, lembrando de apagar senhas ou informações sensíveis nele.
 * **Quais outros pacotes estão instalados no projeto?** Envie uma cópia do seu ``package.json``. Envie, também a saída do comando ``npm list -g --depth 0``. Ele mostrará os pacotes que estão instalados de forma global.
 * **Está usando configurações personalizadas no projeto?** Mande também, como arquivos ``.env`` de exemplo, ``.gitignore``, ``knexfile.js``, ``.eslintrc`` (ou suas variantes) e qualquer outra modificação que possa "alterar" o core do sistema.
@@ -123,11 +123,11 @@ O processo aqui descrito tem muitos objetivos?
 * Engajar a comunidade ao trabalhar através das melhores possibilidades do Generator
 * Permitir um processo sustentável para os mantenedores do Generator em revisar contribuições
 
-Pedimos que siga estes passos para ter sua contribuição aceita pelos desenvolvedores:
+Pedimos que siga estes passos para ter sua contribuição aceita pelas pessoas desenvolvedoras:
 
-1. Siga as intruções disponíveis [no modelo](PULL_REQUEST_TEMPLATE.md)
+1. Siga as instruções disponíveis [no modelo](PULL_REQUEST_TEMPLATE.md)
 2. Siga as [diretrizes de estilo](#diretrizes-de-estilo)
-3. Depois de enviar seu pull request, verifique se todos os [status checks](https://help.github.com/articles/about-status-checks/) estão passando. <details><summary>E se um dos status checks falharem?</summary>Se um status check falhar, mas você acredita que a falha não tem relação com a mudança que você fez no código, por getnileza, deixe um comentário no pull request explicando os motivos que você acha que a falha não tem ligação. Um mantenedor vai tentar re-executar a esteira de verificações para você. Se for concluído que a falha era um falso positivo, então vamos abrir uma issue para tentar identificar a origem da falha nos testes.</details>
+3. Depois de enviar seu pull request, verifique se todos os [status checks](https://help.github.com/articles/about-status-checks/) estão passando. <details><summary>E se um dos status checks falharem?</summary>Se um status check falhar, mas você acredita que a falha não tem relação com a mudança que você fez no código, por gentileza, deixe um comentário no pull request explicando os motivos que você acha que a falha não tem ligação. Um mantenedor vai tentar re-executar a esteira de verificações para você. Se for concluído que a falha era um falso positivo, então vamos abrir uma issue para tentar identificar a origem da falha nos testes.</details>
 
 Embora os pré-requisitos acima devam ser cumpridos antes do seu pull request ser revisado, os revisores podem solicitar a você algum esforço adicional para o design de código, testes, organização de arquivos ou outras mudanças antes que o pull request possa ser completamente aceito e integrado ao código principal.
 
@@ -215,7 +215,7 @@ describe('um cachorro', () => {
 
 Esta seção lista os rótulos que usamos para nos ajudar a rastrear e gerenciar as issues e pull requests.
 
-O [GitHub search](https://help.github.com/articles/searching-issues/) torna fácil o uso de rótulos para encontrar grupo de issues ou pull requests que possam te interessam. Por exemplo, você pode se intereaar nas [issues abertas que estão marcadas como bugs, mas que ainda precisam ser reproduzidas](https://github.com/search?q=is%3Aopen+is%3Aissue+repo%3Acarvalholeo%2Fgenerator-dh+label%3Abug+label%3Aneeds-reproduction) ou quem sabe [pull requests abertas no repositório que ainda não tenham sido revisados](https://github.com/search?q=is%3Aopen+is%3Apr+repo%3Acarvalholeo%2Fgenerator-dh+comments%3A0). Para ajudar a encontrar issues e pull requests, cada rótulo estpá listado com o link de busca para encontrar itens com aquele rótulo no repositório somente. Nós encorajamos você a dar uma lida sobre [outros filtros de pesquisa](https://help.github.com/articles/searching-issues/), que pode te ajudar a escrever pesquisas mais focadas.
+O [GitHub search](https://help.github.com/articles/searching-issues/) torna fácil o uso de rótulos para encontrar grupo de issues ou pull requests que possam te interessam. Por exemplo, você pode se interessar nas [issues abertas que estão marcadas como bugs, mas que ainda precisam ser reproduzidas](https://github.com/search?q=is%3Aopen+is%3Aissue+repo%3Acarvalholeo%2Fgenerator-dh+label%3Abug+label%3Aneeds-reproduction) ou quem sabe [pull requests abertas no repositório que ainda não tenham sido revisados](https://github.com/search?q=is%3Aopen+is%3Apr+repo%3Acarvalholeo%2Fgenerator-dh+comments%3A0). Para ajudar a encontrar issues e pull requests, cada rótulo está listado com o link de busca para encontrar itens com aquele rótulo no repositório somente. Nós encorajamos você a dar uma lida sobre [outros filtros de pesquisa](https://help.github.com/articles/searching-issues/), que pode te ajudar a escrever pesquisas mais focadas.
 
 Os rótulos são agrupados livremente por sua finalidade, mas não é necessário que cada problema tenha um rótulo de cada grupo ou que um problema não possa ter mais de um rótulo do mesmo grupo.
 
@@ -227,7 +227,7 @@ Os rótulos são agrupados livremente por sua finalidade, mas não é necessári
 | `bug` | [search][search-repo-label-bug] | Bugs confirmados ou relatos que muito provavelmente são bugs. |
 | `question` | [search][search-repo-label-question] | Questões que são mais que relatos de bugs ou pedidos de recursos (p.ex. como eu faço X coisa). |
 | `feedback` | [search][search-repo-label-feedback] | Feedback geral, mais do que relatos de bugs ou pedidos de recursos. |
-| `help-wanted` | [search][search-repo-label-help-wanted] | O time de desenvolvmento ficaria agradecido se recebesse ajuda da comunidade ao resolver essas issues. |
+| `help-wanted` | [search][search-repo-label-help-wanted] | O time de desenvolvimento ficaria agradecido se recebesse ajuda da comunidade ao resolver essas issues. |
 | `beginner` | [search][search-repo-label-beginner] | Issues menos complexas, que poderiam ser um bom ponto de partida para trabalhar por aqueles usuários que queiram ajudar. |
 | `more-information-needed` | [search][search-repo-label-more-information-needed] | Mais informações precisam ser coletadas sobre estes problemas ou pedidos de recursos (p.ex. passos para reproduzir). |
 | `needs-reproduction` | [search][search-repo-label-needs-reproduction] | Em geral bugs, mas não puderam ser reproduzidos de forma confiável. |
@@ -249,7 +249,7 @@ Os rótulos são agrupados livremente por sua finalidade, mas não é necessári
 | `security` | [search][search-repo-label-security] | Relacionado com segurança. |
 | `uncaught-exception` | [search][search-repo-label-uncaught-exception] | Issues sobre exceções não tratadas, normalmente aparecem no terminal durante a execução do programa. |
 | `crash` | [search][search-repo-label-crash] | Relatos de parada total do Express Generator DH. |
-| `deprecation-help` | [search][search-repo-label-deprecation-help] | Issues para ajudar os desenvolvedores a remover o uso de pacotes depreciados do sistema. |
+| `deprecation-help` | [search][search-repo-label-deprecation-help] | Issues para ajudar as pessoas desenvolvedoras a remover o uso de pacotes depreciados do sistema. |
 | `installer` | [search][search-repo-label-installer] | Relacionado com a instalação nos diferentes sistemas operacionais. |
 | `auto-updater` | [search][search-repo-label-auto-updater] | Relacionado com auto-atualizador nos diferentes sistemas operacionais. |
 
