@@ -30,7 +30,7 @@ A seguir, você tem um conjunto de diretrizes para contribuir com o Express Gene
 
 ## Código de Conduta
 
-Este projeto e todos os que contém o sufixo ``-dh`` no nome do repositório (e que estão no repositório do Léo Carvalho), são regidos pelo [Código de Conduta](CODE_OF_CONDUCT.md). Ao contribuir (discutindo mudanças, melhorias ou qualquer outo processo), espera-se que você siga este código. Por favor, ao perceber comportamentos inaceitáveis, relate para [leo@leocarvalho.dev](mailtto:leo@leocarvalho.dev).
+Este projeto e todos os que contém o sufixo ``-dh`` no nome do repositório (e que estão no repositório do Léo Carvalho), são regidos pelo [Código de Conduta](CODE_OF_CONDUCT.md). Ao contribuir (discutindo mudanças, melhorias ou qualquer outro processo), espera-se que você siga este código. Por favor, ao perceber comportamentos inaceitáveis, relate para [leo@leocarvalho.dev](mailtto:leo@leocarvalho.dev).
 
 ## Eu não quero ler tudo isso, eu só tenho uma pergunta!!!
 
@@ -47,7 +47,7 @@ Nós temos um canal de mensagens com FAQ e onde a comunidade pode conversar e tr
 
 Esperamos que você entenda que é um serviço de chat assíncrono, ou seja, pode levar um tempo para alguém responder &mdash; SEJA PACIENTE!
 
-Para entrar no nosso servidor no Discord, [acesse o link de convite][convite-discord] (o [Código de Conduta](#código-de-conduta) daqui se aplica no sevidor, também).
+Para entrar no nosso servidor no Discord, [acesse o link de convite][convite-discord] (o [Código de Conduta](#código-de-conduta) daqui se aplica no servidor, também).
 
 ## O que eu preciso saber antes de começar?
 
@@ -79,13 +79,13 @@ Antes de criar relatos de bugs, por favor, verifique [esta lista](#antes-de-envi
 
 Os bugs são rastreados através do [GitHub issues](https://guides.github.com/features/issues/). Para criar uma issue aqui no repositório, forneça os detalhes solicitados, preenchendo o [modelo](https://github.com/carvalholeo/generator-dh/blob/master/.github/ISSUE_TEMPLATE/bug_report.md).
 
-Explique o problema e inclua detalhes adicionais para ajudar os desenvolvedores a reproduzir o problema.
+Explique o problema e inclua detalhes adicionais para ajudar as pessoas desenvolvedoras a reproduzir o problema.
 
 * **Use um título claro e descritivo** na issue que identifica o problema.
-* **Descreva os exatos passos que reprduzem o problema**, com tantos detalhes quanto for possível. Por exemplo, comece explicando o como o projeto foi instalado (o gerenciador de pacotes, como NPM ou Yarn), o comando exato na execução, sistema operacional, qual o terminal (como PowerShell, prompt de comando, Bash, Zsh, etc). Outro ponto importante na sua descrição, é dizer **não somente o que você tentou fazer, mas explicar o motivo**. Por exemplo, você está tentando usar um motor de renderização no Projeto Integrador diferente de EJS, junto com a opção de instalar os pacotes padrão do PI e apareceu um erro, tente descrever o que aconteceu ao executar.
+* **Descreva os exatos passos que reproduzem o problema**, com tantos detalhes quanto for possível. Por exemplo, comece explicando o como o projeto foi instalado (o gerenciador de pacotes, como NPM ou Yarn), o comando exato na execução, sistema operacional, qual o terminal (como PowerShell, prompt de comando, Bash, Zsh, etc). Outro ponto importante na sua descrição, é dizer **não somente o que você tentou fazer, mas explicar o motivo**. Por exemplo, você está tentando usar um motor de renderização no Projeto Integrador diferente de EJS, junto com a opção de instalar os pacotes padrão do PI e apareceu um erro, tente descrever o que aconteceu ao executar.
 * **Forneça exemplos específicos para demonstrar os passos**. Inclua links para arquivos ou projetos do GitHub, ou copie e cole trechos do erro, em que você usa esses exemplos. Se você estiver fornecendo trechos de erro copiados, use o [bloco de código Markdown](https://help.github.com/articles/markdown-basics/#multiple-lines).
 * **Descreva o comportamento observado depois de seguir os passos** e aponte qual é exatamente o problema com aquele comportamento.
-* **Explique que comportamente você estava esperando e por quê**
+* **Explique que comportamento você estava esperando e por quê**
 * **Inclua prints/capturas de tela e GIFs** que mostrem você seguindo os passos descritos e demonstrem o problema de forma inequívoca.
 * **Se o problema é relacionado à performance ou memória**, inclua uma captura de tela de um gerenciador de tarefas no seu relato.
 * **Confirme programas e processos** que estão sendo executados durante a apresentação da falha.
@@ -100,7 +100,7 @@ Forneça mais contexto ao responder as seguintes perguntas?
 Inclua detalhes sobre sua configuração e ambiente:
 
 * **Qual as versões do Node e do NPM você está usando?** Pegue a versão digitando os comandos ``node -`` e ``npm -v`` no terminal de sua preferência.
-* **Qual o nome e a versão do Sistema Operacional que você está usando?** No Windows, pegue a versão digitando apertando do teclado, simultaneamente, as teclas ``Win + R``, e então digite ``winver``. Para distribuições Linux, verifique junto com o desenvolvedor qual o comando permite fazer isso.
+* **Qual o nome e a versão do Sistema Operacional que você está usando?** No Windows, pegue a versão digitando apertando do teclado, simultaneamente, as teclas ``Win + R``, e então digite ``winver``. Para distribuições Linux, verifique junto com a pessoa desenvolvedora qual o comando permite fazer isso.
 * **Você está tentando rodar através de uma instância do Docker ou outro esquema de container?** Se sim, envie o link ou uma cópia do Dockerfile, lembrando de apagar senhas ou informações sensíveis nele.
 * **Quais outros pacotes estão instalados no projeto?** Envie uma cópia do seu ``package.json``. Envie, também a saída do comando ``npm list -g --depth 0``. Ele mostrará os pacotes que estão instalados de forma global.
 * **Está usando configurações personalizadas no projeto?** Mande também, como arquivos ``.env`` de exemplo, ``.gitignore``, ``knexfile.js``, ``.eslintrc`` (ou suas variantes) e qualquer outra modificação que possa "alterar" o core do sistema.
@@ -109,7 +109,7 @@ Inclua detalhes sobre sua configuração e ambiente:
 
 Quer ajudar, mas não sabe por onde começar? Você pode começar olhando nas issues marcadas com `beginner` e `help-wanted`:
 
-* [Issues `beginner`][beginner] - são isues que precisam de poucas linhas de código e poucos testes automatizados, ideal para iniciantes.
+* [Issues `beginner`][beginner] - são issues que precisam de poucas linhas de código e poucos testes automatizados, ideal para iniciantes.
 * [Issues `help wanted`][help-wanted] - issues que podem precisar de um pouco mais de envolvimento e compromentimento do que as issues `beginner`.
 
 Ambas as listas de issues são ordenadas pelo número total de comentários. Sabemos, não é perfeito, mas o número de comentários é um bom indicador de impacto que uma mudança pode trazer.
@@ -129,7 +129,7 @@ Pedimos que siga estes passos para ter sua contribuição aceita pelos desenvolv
 2. Siga as [diretrizes de estilo](#diretrizes-de-estilo)
 3. Depois de enviar seu pull request, verifique se todos os [status checks](https://help.github.com/articles/about-status-checks/) estão passando. <details><summary>E se um dos status checks falharem?</summary>Se um status check falhar, mas você acredita que a falha não tem relação com a mudança que você fez no código, por getnileza, deixe um comentário no pull request explicando os motivos que você acha que a falha não tem ligação. Um mantenedor vai tentar re-executar a esteira de verificações para você. Se for concluído que a falha era um falso positivo, então vamos abrir uma issue para tentar identificar a origem da falha nos testes.</details>
 
-Embora os pré-requisitos acima devam ser cumpridos antes do seu pull request ser revisado, os resvisores podem solicitar a você algum esforço adicional para o design de código, testes, organização de arquivos ou outras mudanças antes que o pull request possa ser completamente aceito e integrado ao código principal.
+Embora os pré-requisitos acima devam ser cumpridos antes do seu pull request ser revisado, os revisores podem solicitar a você algum esforço adicional para o design de código, testes, organização de arquivos ou outras mudanças antes que o pull request possa ser completamente aceito e integrado ao código principal.
 
 ## Diretrizes de estilo
 
@@ -138,8 +138,8 @@ Embora os pré-requisitos acima devam ser cumpridos antes do seu pull request se
 * Use o tempo verbal presente ("Adiciona opção", não "Adicionada opção")
 * Use o modo imperativo ("Mudar arquivo X", não "Muda arquivo X")
 * Limite a primeira linha em 72 caracteres ou menos
-* Indice o número de issues e pull requests de livremente após a primeira linha
-* Cosidere começar a mensagem de commit com um emoji da lista abaixo. Isso é só enfeite.
+* Indique o número de issues e pull requests de livremente após a primeira linha
+* Considere começar a mensagem de commit com um emoji da lista abaixo. Isso é só enfeite.
   * :rocket: `:rocket:`: quando estiver adicionando funcionalidades ao programa
   * :art: `:art:` quando estiver melhorando o formato/estrutura do código
   * :racehorse: `:racehorse:` quando estiver melhorando performance
@@ -189,7 +189,7 @@ Também, pode executar o comando `npm run lint-fix` periodicamente, para corrigi
 
 ### Guia de estilo de especificações
 
-* Incua uma especificação bem formulada e bem estruturada usando [Mocha](https://mochajs.org/) na pasta `./test`.
+* Inclua uma especificação bem formulada e bem estruturada usando [Mocha](https://mochajs.org/) na pasta `./test`.
 * Trate `describe` como um pronome ou situação
 * Trate `it` como uma declaração sobre o estado ou como uma operação muda um estado
 
