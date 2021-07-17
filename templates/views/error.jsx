@@ -1,5 +1,5 @@
-var React = require('react');
-var Layout = require('./layout');
+const React = require('react');
+const Layout = require('./layout');
 
 function Error(props) {
   return (
